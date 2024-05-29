@@ -1,0 +1,123 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:sonarjs/recommended",
+    "plugin:react/recommended",
+    "plugin:@next/next/recommended",
+    "plugin:prettier/recommended",
+    "next/core-web-vitals",
+    "prettier",
+    "plugin:i18next/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "@next/eslint-plugin-next",
+    "prettier",
+    "@typescript-eslint",
+    "jam3",
+    "i18next",
+    "no-relative-import-paths",
+    "redundant-undefined",
+    "sonarjs"
+  ],
+  "rules": {
+    "prettier/prettier": "error",
+    "no-console": "warn",
+    "no-nested-ternary": 1,
+    "arrow-body-style": 1,
+    "react/display-name": 0,
+    "import/no-unresolved": 0,
+    "react/no-children-prop": 0,
+    "react/self-closing-comp": 2,
+    "react/react-in-jsx-scope": 0,
+    "@next/next/no-img-element": 0,
+    "react/no-unescaped-entities": 0,
+    "import/no-useless-path-segments": 1,
+    "no-unused-vars": [
+      1,
+      {
+        "ignoreRestSiblings": false
+      }
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "args": "all",
+        "argsIgnorePattern": "^_",
+        "caughtErrors": "all",
+        "caughtErrorsIgnorePattern": "^_",
+        "destructuredArrayIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "ignoreRestSiblings": true
+      }
+    ],
+    "react/jsx-curly-brace-presence": ["error", { "props": "never" }],
+    "no-relative-import-paths/no-relative-import-paths": [
+      "error",
+      { "rootDir": "src", "prefix": "@" }
+    ],
+    "redundant-undefined/redundant-undefined": "error",
+    "default-param-last": "error",
+  },
+  "overrides": [
+    {
+      "files": ["src/modules/*/**"],
+      "rules": {
+        "no-relative-import-paths/no-relative-import-paths": "off"
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": [
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-type-checked"
+      ],
+      "parserOptions": {
+        "project": ["./tsconfig.json"]
+      },
+      "rules": {
+        "@typescript-eslint/ban-types": [
+          "error",
+          {
+            "extendDefaults": true,
+            "types": {
+              "{}": false
+            }
+          }
+        ],
+        "@typescript-eslint/no-misused-promises": [
+          "error",
+          {
+            // Disabled this for callback function
+            "checksVoidReturn": false
+          }
+        ],
+        // Disabled for none blocking process e.g. fetch data without waiting
+        "@typescript-eslint/no-floating-promises": "off",
+        "@typescript-eslint/no-unsafe-argument": "off",
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/no-unsafe-return": "off",
+        "@typescript-eslint/no-unsafe-member-access": "off",
+        "@typescript-eslint/no-unsafe-call": "off",
+        "jam3/no-sanitizer-with-danger": 2,
+
+        "default-param-last": "on",
+        "@typescript-eslint/default-param-last": "error"
+      }
+    }
+  ]
+}

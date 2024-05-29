@@ -1,2 +1,1 @@
-# maew-tun-web
-web application for บ้านแมวตุ๋น page
+This is a starter template for [Learn Next.js](https://nextjs.org/learn).

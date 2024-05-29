@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+npx tsc
+npm run lint
+npm audit --production --audit-level=high
+# npm run test
