@@ -3,7 +3,6 @@ import { ComponentType, ReactNode } from 'react';
 import { AppProps } from 'next/app';
 import { EmotionCache } from '@emotion/react';
 
-
 export type Page<P = {}> = NextPage<P> & {
   getLayout?: (page?: ReactNode) => ReactNode;
   layout?: ComponentType;

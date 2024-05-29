@@ -70,7 +70,7 @@
       { "rootDir": "src", "prefix": "@" }
     ],
     "redundant-undefined/redundant-undefined": "error",
-    "default-param-last": "error",
+    "default-param-last": "error"
   },
   "overrides": [
     {
@@ -115,7 +115,7 @@
         "@typescript-eslint/no-unsafe-call": "off",
         "jam3/no-sanitizer-with-danger": 2,
 
-        "default-param-last": "on",
+        "default-param-last": "error",
         "@typescript-eslint/default-param-last": "error"
       }
     }
