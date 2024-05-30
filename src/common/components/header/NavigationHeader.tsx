@@ -4,10 +4,10 @@ import { getSafeAreaPageTop } from '@/utils/safeAreaStyle';
 import { Box, Container, Typography, styled } from '@mui/material';
 import { memo } from 'react';
 
-const HeaderComponent = styled(Box)(({ theme }) => ({
+const StyledHeader = styled(Box)(({ theme }) => ({
   paddingTop: getSafeAreaPageTop(theme.spacing(1)),
   paddingBottom: theme.spacing(1),
-  minHeight: 104,
+  minHeight: 48,
   width: '100%',
   position: 'fixed',
   top: 0,
@@ -37,11 +37,11 @@ const HeaderWrapper = styled(Box)(() => ({
   justifyContent: 'center',
 }));
 
-const NavigationHeader = ({ pageTitle, children }: INavigationHeader) => {
+const NavigationHeader = ({ title, children }: INavigationHeader) => {
   const { isTriggered, scrollClassName } = useScrollDirection();
 
   return (
-    <HeaderComponent className={scrollClassName}>
+    <StyledHeader className={scrollClassName}>
       <Container>
         <HeaderWrapper>
           {isTriggered && (
@@ -64,14 +64,14 @@ const NavigationHeader = ({ pageTitle, children }: INavigationHeader) => {
                   overflow: 'hidden',
                 }}
               >
-                {pageTitle}
+                {title}
               </Typography>
             </Box>
           )}
         </HeaderWrapper>
         {isTriggered && children}
       </Container>
-    </HeaderComponent>
+    </StyledHeader>
   );
 };
 

@@ -1,5 +1,8 @@
 {
-  "pageTitle": "Maew Tun Family",
+  "webTitle": "Maew Tun Family",
   "kaiTunName": "Kai Tun",
-  "kaiKhemName": "Kai Khem"
+  "kaiKhemName": "Kai Khem",
+  "homePageTitle": "Home Page",
+  "page1Title": "Page 1", 
+  "page2Title": "Page 2"
 }

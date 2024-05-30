@@ -5,11 +5,11 @@ import { Container, Stack, Typography } from '@mui/material';
 import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 
-const Home = () => {
+const Page1 = () => {
   const { t } = useTranslation();
   return (
     <>
-      <NavigationHeader title={t('homePageTitle')}>
+      <NavigationHeader title={t('page2Title')}>
         {/* TODO: use loading state when available */}
         <PageTabs isLoading={false} sxProps={{ mt: 2 }} />
       </NavigationHeader>
@@ -21,13 +21,16 @@ const Home = () => {
           <Typography variant="h2" color="text.secondary">
             {t('kaiKhemName')}
           </Typography>
+          <Typography variant="h2" color="text.secondary">
+            {t('kaiKhemName')}
+          </Typography>
         </Stack>
       </Container>
     </>
   );
 };
 
-Home.getLayout = function getLayout(page: ReactNode) {
+Page1.getLayout = function getLayout(page: ReactNode) {
   return <MainLayout>{page}</MainLayout>;
 };
-export default Home;
+export default Page1;

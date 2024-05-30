@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 
-export interface INavigationHeader {
-  title: string;
+export interface IMainLayout {
   children?: ReactNode;
 }
