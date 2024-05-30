@@ -1,12 +1,14 @@
-import { ReactNode } from "react";
-import { useTranslation } from "react-i18next";
+import { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const Home = () => {
   const { t } = useTranslation();
-  return <div>
-    <p>{t('kaiTunName')}</p>
-    <p>{t('kaiKhemName')}</p>
-    </div>;
+  return (
+    <div>
+      <p>{t('kaiTunName')}</p>
+      <p>{t('kaiKhemName')}</p>
+    </div>
+  );
 };
 
 Home.getLayout = function getLayout(page: ReactNode) {

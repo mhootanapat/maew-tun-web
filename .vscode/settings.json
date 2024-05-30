@@ -1,0 +1,23 @@
+{
+  "editor.formatOnSave": true,
+  "javascript.validate.enable": true,
+  "typescript.validate.enable": true,
+  "search.exclude": {
+    "**/.git": true,
+    "**/node_modules": true,
+    "**/.next": true,
+    "**/yarn.lock": true,
+    "**/yarn-*": true,
+    "**/*.svg": true
+  },
+  "[javascript][typescript][typescriptreact]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit",
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.tsdk": "node_modules/typescript/lib",
+}
