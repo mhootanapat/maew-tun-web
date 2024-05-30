@@ -1,4 +1,4 @@
-import { Props } from '@/common/types/app';
+import { Props } from '@/common/types/pages/app';
 import createEmotionCache from '@/utils/createEmotionCache';
 import '@/utils/i18n';
 import { CacheProvider } from '@emotion/react';

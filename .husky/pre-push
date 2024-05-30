@@ -4,4 +4,4 @@
 npx tsc
 npm run lint
 npm audit --production --audit-level=high
-# npm run test
+npm run test
