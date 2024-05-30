@@ -1,3 +1,4 @@
+import NavigationHeader from '@/common/components/header/NavigationHeader';
 import { Container, Stack, Typography } from '@mui/material';
 import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -5,16 +6,19 @@ import { useTranslation } from 'react-i18next';
 const Home = () => {
   const { t } = useTranslation();
   return (
-    <Container>
-      <Stack alignItems="center" my={2}>
-        <Typography variant="h2" color="text.primary">
-          {t('kaiTunName')}
-        </Typography>
-        <Typography variant="h2" color="text.secondary">
-          {t('kaiKhemName')}
-        </Typography>
-      </Stack>
-    </Container>
+    <>
+      <NavigationHeader pageTitle={t('pageTitle')} />
+      <Container>
+        <Stack alignItems="center" my={2}>
+          <Typography variant="h2" color="text.primary">
+            {t('kaiTunName')}
+          </Typography>
+          <Typography variant="h2" color="text.secondary">
+            {t('kaiKhemName')}
+          </Typography>
+        </Stack>
+      </Container>
+    </>
   );
 };
 
