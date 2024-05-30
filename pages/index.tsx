@@ -1,7 +1,11 @@
 import NavigationHeader from '@/common/components/header/NavigationHeader';
 import PageTabs from '@/common/components/tabs/PageTabs';
 import MainLayout from '@/layout/main';
-import { Container, Stack, Typography } from '@mui/material';
+import KaiKhemBanner from '@/sections/kaikem/KaiKhemBanner';
+import KaiKhemInformation from '@/sections/kaikem/KaiKhemInformation';
+import KaiTunBanner from '@/sections/kaitun/KaiTunBanner';
+import KaiTunInformation from '@/sections/kaitun/KaiTunInformation';
+import { Stack } from '@mui/material';
 import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -13,16 +17,12 @@ const Home = () => {
         {/* TODO: use loading state when available */}
         <PageTabs isLoading={false} sxProps={{ mt: 2 }} />
       </NavigationHeader>
-      <Container>
-        <Stack alignItems="center" my={2}>
-          <Typography variant="h2" color="text.primary">
-            {t('kaiTunName')}
-          </Typography>
-          <Typography variant="h2" color="text.secondary">
-            {t('kaiKhemName')}
-          </Typography>
-        </Stack>
-      </Container>
+      <Stack spacing={0}>
+        <KaiTunBanner />
+        <KaiTunInformation />
+        <KaiKhemBanner />
+        <KaiKhemInformation />
+      </Stack>
     </>
   );
 };

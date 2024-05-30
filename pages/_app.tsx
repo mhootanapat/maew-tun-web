@@ -8,6 +8,7 @@ import { t } from 'i18next';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { ReactNode } from 'react';
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -47,8 +48,10 @@ const MyApp = (props: Props) => {
       </Head>
       <CacheProvider value={emotionCache}>
         <ThemeProvider theme={theme}>
-          <CssBaseline />
-          {getLayout(<Component {...pageProps} />)}
+          <ParallaxProvider>
+            <CssBaseline />
+            {getLayout(<Component {...pageProps} />)}
+          </ParallaxProvider>
         </ThemeProvider>
       </CacheProvider>
     </>
