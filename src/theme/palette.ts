@@ -2,31 +2,59 @@ import { alpha } from '@mui/material/styles';
 
 const COLORS = {
   // NOTE: don't forget to add type to declare module when add more color
+
+  //#region white
   white: '#fff',
   white_opacity_20: alpha('#fff', 0.2),
   white_opacity_60: alpha('#fff', 0.6),
   white_opacity_80: alpha('#fff', 0.8),
   white_opacity_90: alpha('#fff', 0.9),
+  //#endregion white
+
+  //#region grey
   grey: '#70708A',
-  soft_grey: '#9999AD',
-  dark_grey: '#3D3D4F',
+  grey_soft: '#9999AD',
+  grey_dark: '#3D3D4F',
+  //#endregion grey
+
+  //#region black
   black: '#25242D',
+  //#endregion black
+
+  //#region orange
   orange: '#F97316',
-  orange_light: '#FFEDD5',
+  orange_light: '#FEB941',
+  //#endregion orange
+
+  //#region green
+  yellow_dark: '#FFC94A',
+  //#endregion orange
+
+  //#region green
   green: '#16A34A',
   green_light: '#DCFCE7',
+  //#endregion green
+
+  //#region brown
+  brown: '#876445',
+  brown_coffee: '#D8AE7E',
+  brown_beige: '#FFF2D7',
+  brown_dark: '#543310',
+  //#endregion brown
 };
 
 const TEXT = {
-  primary: COLORS.black,
-  secondary: COLORS.dark_grey,
+  primary: COLORS.brown_dark,
+  secondary: COLORS.grey_dark,
   tertiary: COLORS.grey,
-  disabled: COLORS.soft_grey,
+  disabled: COLORS.grey_soft,
   white: COLORS.white,
 };
 
 const BACKGROUND = {
-  default: COLORS.white,
+  default: COLORS.brown_beige,
+  primary: COLORS.brown,
+  navigationHeader: COLORS.brown_coffee,
   transparent: {
     20: COLORS.white_opacity_20,
     80: COLORS.white_opacity_80,
@@ -35,9 +63,9 @@ const BACKGROUND = {
 };
 
 const palette = {
-  text: TEXT,
-  background: BACKGROUND,
-  colors: COLORS,
+  colors: COLORS, // NOTE: Palette type
+  text: TEXT, // NOTE: TypeText type
+  background: BACKGROUND, // NOTE: TypeBackground type
 };
 
 declare module '@mui/material/styles' {
@@ -54,8 +82,13 @@ declare module '@mui/material/styles' {
       black: string;
       orange: string;
       orange_light: string;
+      yellow_dark: string;
       green: string;
       green_light: string;
+      brown_coffee: string;
+      brown_beige: string;
+      brown: string;
+      brown_dark: string;
     };
   }
 
@@ -68,6 +101,8 @@ declare module '@mui/material/styles' {
   }
   interface TypeBackground {
     default: string;
+    navigationHeader: string;
+    primary: string;
     transparent: {
       20: string;
       80: string;

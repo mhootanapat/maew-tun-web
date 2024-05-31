@@ -19,7 +19,7 @@ const StyledHeader = styled(Box)(({ theme }) => ({
   transitionDuration: '600ms',
 
   '&.triggered': {
-    background: theme.palette.background.transparent,
+    background: theme.palette.background.navigationHeader,
     backdropFilter: 'blur(6px)',
     boxShadow: theme.shadows[10],
     paddingBottom: theme.spacing(1.5),

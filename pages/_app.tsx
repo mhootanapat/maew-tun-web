@@ -22,28 +22,6 @@ const MyApp = (props: Props) => {
     <>
       <Head>
         <title>{t('webTitle')}</title>
-
-        <meta charSet="utf-8" />
-        <link rel="icon" href={`${process.env.NEXT_PUBLIC_URL}/favicon.ico`} type="image/x-icon" />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href={`${process.env.NEXT_PUBLIC_URL}/favicon/apple-touch-icon.png`}
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href={`${process.env.NEXT_PUBLIC_URL}/favicon/favicon-32x32.png`}
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href={`${process.env.NEXT_PUBLIC_URL}/favicon/favicon-16x16.png`}
-        />
-        <link rel="manifest" href="/manifest.json" />
-
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
       </Head>
       <CacheProvider value={emotionCache}>

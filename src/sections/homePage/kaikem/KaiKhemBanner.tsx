@@ -1,7 +1,7 @@
 import { StyledParallaxBanner } from '@/common/components/parallax';
+import KaiKhemHeadline from '@/sections/homePage/kaikem/KaiKhemHeadline';
 import { Box, styled } from '@mui/material';
 import { memo } from 'react';
-import { useTranslation } from 'react-i18next';
 import { BannerLayer } from 'react-scroll-parallax';
 
 const ForegroundOverlay = styled(Box)(() => ({
@@ -10,32 +10,26 @@ const ForegroundOverlay = styled(Box)(() => ({
   inset: 0,
 }));
 
-const KaiTunBanner = () => {
-  const { t } = useTranslation();
-
+const KaiKhemBanner = () => {
   const background: BannerLayer = {
     image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/105988/banner-background.jpg',
     translateY: [0, 50],
-    opacity: [1, 0.3],
+    opacity: [0.5, 2],
     scale: [1.05, 1, 'easeOutCubic'],
     shouldAlwaysCompleteAnimation: true,
   };
 
   const headline: BannerLayer = {
-    translateY: [0, 30],
-    scale: [1, 1.05, 'easeOutCubic'],
+    translateX: [-50, 50],
+    scale: [1, 1.05, 'easeInCubic'],
     shouldAlwaysCompleteAnimation: true,
     expanded: false,
-    children: (
-      <div className="absolute inset-0 flex items-center justify-center">
-        <h1 className="text-6xl md:text-8xl text-white font-thin">{t('kaiTunName')}</h1>
-      </div>
-    ),
+    children: <KaiKhemHeadline />,
   };
 
   const foreground: BannerLayer = {
     image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/105988/banner-foreground.png',
-    translateY: [0, 15],
+    translateX: [0, 50],
     scale: [1, 1.1, 'easeOutCubic'],
     shouldAlwaysCompleteAnimation: true,
   };
@@ -50,4 +44,4 @@ const KaiTunBanner = () => {
   return <StyledParallaxBanner layers={[background, headline, foreground, gradientOverlay]} />;
 };
 
-export default memo(KaiTunBanner);
+export default memo(KaiKhemBanner);

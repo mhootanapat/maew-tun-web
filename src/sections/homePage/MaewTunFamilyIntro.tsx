@@ -7,23 +7,20 @@ const ContentWrapper = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  background: theme.palette.colors.black,
+  background: theme.palette.background.primary,
 }));
 
-const KaiKhemInformation = () => {
+const MaewTunFamilyIntro = () => {
   const { t } = useTranslation();
   return (
     <ContentWrapper>
       <Stack>
         <Typography variant="h1" color={(theme) => theme.palette.text.white}>
-          {t('kaiKhemName')}
-        </Typography>
-        <Typography variant="h1" color={(theme) => theme.palette.text.white}>
-          {t('kaiTunName')}
+          {t('webTitle')}
         </Typography>
       </Stack>
     </ContentWrapper>
   );
 };
 
-export default memo(KaiKhemInformation);
+export default memo(MaewTunFamilyIntro);

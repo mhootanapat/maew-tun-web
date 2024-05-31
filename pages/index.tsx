@@ -1,10 +1,11 @@
 import NavigationHeader from '@/common/components/header/NavigationHeader';
 import PageTabs from '@/common/components/tabs/PageTabs';
 import MainLayout from '@/layout/main';
-import KaiKhemBanner from '@/sections/kaikem/KaiKhemBanner';
-import KaiKhemInformation from '@/sections/kaikem/KaiKhemInformation';
-import KaiTunBanner from '@/sections/kaitun/KaiTunBanner';
-import KaiTunInformation from '@/sections/kaitun/KaiTunInformation';
+import MaewTunFamilyIntro from '@/sections/homePage/MaewTunFamilyIntro';
+import KaiKhemBanner from '@/sections/homePage/kaikem/KaiKhemBanner';
+import KaiKhemInformation from '@/sections/homePage/kaikem/KaiKhemInformation';
+import KaiTunBanner from '@/sections/homePage/kaitun/KaiTunBanner';
+import KaiTunInformation from '@/sections/homePage/kaitun/KaiTunInformation';
 import { Stack } from '@mui/material';
 import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -18,6 +19,7 @@ const Home = () => {
         <PageTabs isLoading={false} sxProps={{ mt: 2 }} />
       </NavigationHeader>
       <Stack spacing={0}>
+        <MaewTunFamilyIntro />
         <KaiTunBanner />
         <KaiTunInformation />
         <KaiKhemBanner />

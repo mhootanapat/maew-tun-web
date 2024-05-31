@@ -7,7 +7,7 @@ const ContentWrapper = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  background: theme.palette.colors.black,
+  background: theme.palette.background.primary,
 }));
 
 const KaiTunInformation = () => {
