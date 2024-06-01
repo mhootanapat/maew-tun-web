@@ -28,6 +28,7 @@ const ImageWithFallback = (props: IImageWithFallback) => {
         }}
       >
         <PlaceholderImage
+          data-testid="fallback-placeholder-image"
           boxProps={{ alignItems: 'center' }}
           sx={{ color: (theme) => theme.palette.colors.grey[400] }}
           fontSize={iconSize}
