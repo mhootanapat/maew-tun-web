@@ -51,13 +51,11 @@ const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
 
 const PageMenu = ({ boxProps }: IPageMenu) => {
   const router = useRouter();
-
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const { value, title } = useMemo(
     () => pageTabInfoList.find((tab) => router.asPath === tab.value) ?? pageTabInfoList[0],
     [router.asPath]
   );
-
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const handleClick = useCallback((event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   }, []);
@@ -71,19 +69,24 @@ const PageMenu = ({ boxProps }: IPageMenu) => {
         {title}
       </StyledButton>
       <StyledMenu anchorEl={anchorEl} open={!!anchorEl} onClose={handleClose}>
-        {pageTabInfoList.map((tab) => (
-          <StyledMenuItem
-            className={value === tab.value ? 'Mui-selected' : undefined}
-            key={tab.value}
-            onClick={() => {
-              handleClose();
-              router.push(tab.value);
-            }}
-            disabled={tab.disabled}
-          >
-            {tab.title}
-          </StyledMenuItem>
-        ))}
+        {pageTabInfoList.map((tab) => {
+          const isSelected = value === tab.value;
+          return (
+            <StyledMenuItem
+              className={isSelected ? 'Mui-selected' : undefined}
+              key={tab.value}
+              onClick={() => {
+                handleClose();
+                if (!isSelected) {
+                  router.push(tab.value);
+                }
+              }}
+              disabled={tab.disabled}
+            >
+              {tab.title}
+            </StyledMenuItem>
+          );
+        })}
       </StyledMenu>
     </Box>
   );

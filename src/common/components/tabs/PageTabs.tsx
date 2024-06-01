@@ -77,7 +77,9 @@ const PageTabs = ({ sxProps }: IPageTabs) => {
             label={tab.title}
             value={tab.value}
             onClick={() => {
-              router.push(tab.value);
+              if (activeTab !== tab.value) {
+                router.push(tab.value);
+              }
             }}
             disabled={tab.disabled}
           />

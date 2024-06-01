@@ -29,7 +29,7 @@ const KaiKhemBanner = () => {
 
   const foreground: BannerLayer = {
     image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/105988/banner-foreground.png',
-    translateX: [0, 50],
+    translateX: [-50, 50],
     scale: [1, 1.1, 'easeOutCubic'],
     shouldAlwaysCompleteAnimation: true,
   };
