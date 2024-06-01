@@ -24,6 +24,7 @@ const COLORS = {
   //#region orange
   orange: '#F97316',
   orange_light: '#FEB941',
+  orange_opacity_005: alpha('#F97316', 0.05),
   //#endregion orange
 
   //#region green
@@ -77,11 +78,12 @@ declare module '@mui/material/styles' {
       white_opacity_80: string;
       white_opacity_90: string;
       grey: string;
-      soft_grey: string;
-      dark_grey: string;
+      grey_soft: string;
+      grey_dark: string;
       black: string;
       orange: string;
       orange_light: string;
+      orange_opacity_005: string;
       yellow_dark: string;
       green: string;
       green_light: string;

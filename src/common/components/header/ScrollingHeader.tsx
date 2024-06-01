@@ -13,7 +13,6 @@ const StyledHeader = styled(Box)(({ theme }) => ({
   top: 0,
   left: '50%',
   transform: 'translate(-50%, 0%)',
-  zIndex: 10,
   transitionProperty: 'all',
   transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
   transitionDuration: '600ms',
@@ -23,6 +22,7 @@ const StyledHeader = styled(Box)(({ theme }) => ({
     backdropFilter: 'blur(6px)',
     boxShadow: theme.shadows[10],
     paddingBottom: theme.spacing(1.5),
+    zIndex: 99999,
   },
 
   '&.hide': {

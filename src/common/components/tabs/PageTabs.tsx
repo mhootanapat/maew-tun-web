@@ -47,6 +47,11 @@ const StyledTab = styled((props: TabProps) => <Tab disableRipple {...props} />)(
     fontWeight: theme.typography.fontWeightMedium,
   },
 
+  '&.Mui-disabled': {
+    color: theme.palette.colors.grey_soft,
+    opacity: 0.3,
+  },
+
   '&.MuiTabs-indicator': {
     display: 'flex',
     justifyContent: 'center',
@@ -55,7 +60,7 @@ const StyledTab = styled((props: TabProps) => <Tab disableRipple {...props} />)(
 }));
 //#endregion Tab Modified
 
-const PageTabs = ({ isLoading, sxProps }: IPageTabs) => {
+const PageTabs = ({ sxProps }: IPageTabs) => {
   const router = useRouter();
 
   const activeTab = useMemo(
@@ -63,10 +68,6 @@ const PageTabs = ({ isLoading, sxProps }: IPageTabs) => {
     [router.asPath]
   );
 
-  if (isLoading) {
-    // TODO: add skeleton when state is available
-    return null;
-  }
   return (
     <Stack direction="row" spacing={0.5} alignItems="center">
       <StyledTabs value={activeTab} variant="scrollable" scrollButtons="auto" sx={{ ...sxProps }}>
