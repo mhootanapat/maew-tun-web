@@ -1,4 +1,4 @@
-import { StyledParallaxBanner } from '@/common/components/parallax';
+import { StyledParallaxBanner } from '@/common/components/Parallax';
 import KaiTunHeadLine from '@/sections/homePage/kaitun/KaiTunHeadline';
 import { Box, styled } from '@mui/material';
 import { memo } from 'react';

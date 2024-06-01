@@ -54,7 +54,7 @@ const TEXT = {
 const BACKGROUND = {
   default: COLORS.brown_beige,
   primary: COLORS.brown,
-  navigationHeader: COLORS.brown_coffee,
+  navigationHeader: COLORS.brown_beige,
   transparent: {
     20: COLORS.white_opacity_20,
     80: COLORS.white_opacity_80,

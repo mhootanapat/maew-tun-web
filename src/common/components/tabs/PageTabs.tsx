@@ -1,6 +1,6 @@
 import { pageTabInfoList } from '@/common/constants/pageTabList';
 import { IPageTabs } from '@/common/types/common/components/tabs/PageTabs';
-import { Tab, TabProps, Tabs, TabsProps, styled } from '@mui/material';
+import { Stack, Tab, TabProps, Tabs, TabsProps, styled } from '@mui/material';
 import { useRouter } from 'next/router';
 import { ReactNode, memo, useMemo } from 'react';
 
@@ -22,7 +22,7 @@ const StyledTabs = styled((props: StyledTabsProps) => (
   '& .MuiTabs-indicatorSpan': {
     maxWidth: 40,
     width: '100%',
-    backgroundColor: theme.palette.colors.yellow_dark,
+    backgroundColor: theme.palette.colors.orange,
   },
 }));
 //#endregion Tab Wrapper
@@ -35,7 +35,6 @@ const StyledTab = styled((props: TabProps) => <Tab disableRipple {...props} />)(
     minWidth: 0,
   },
   fontWeight: theme.typography.fontWeightBold,
-  marginRight: theme.spacing(1),
   color: theme.palette.text.primary,
 
   '&:hover': {
@@ -53,12 +52,6 @@ const StyledTab = styled((props: TabProps) => <Tab disableRipple {...props} />)(
     justifyContent: 'center',
     backgroundColor: 'transparent',
   },
-
-  '&.MuiTabs-indicatorSpan': {
-    maxWidth: 40,
-    width: '100%',
-    backgroundColor: theme.palette.colors.yellow_dark,
-  },
 }));
 //#endregion Tab Modified
 
@@ -75,18 +68,21 @@ const PageTabs = ({ isLoading, sxProps }: IPageTabs) => {
     return null;
   }
   return (
-    <StyledTabs value={activeTab} variant="scrollable" scrollButtons="auto" sx={{ ...sxProps }}>
-      {pageTabInfoList.map((tab) => (
-        <StyledTab
-          key={tab.value}
-          label={tab.title}
-          value={tab.value}
-          onClick={() => {
-            router.push(tab.value);
-          }}
-        />
-      ))}
-    </StyledTabs>
+    <Stack direction="row" spacing={0.5} alignItems="center">
+      <StyledTabs value={activeTab} variant="scrollable" scrollButtons="auto" sx={{ ...sxProps }}>
+        {pageTabInfoList.map((tab) => (
+          <StyledTab
+            key={tab.value}
+            label={tab.title}
+            value={tab.value}
+            onClick={() => {
+              router.push(tab.value);
+            }}
+            disabled={tab.disabled}
+          />
+        ))}
+      </StyledTabs>
+    </Stack>
   );
 };
 

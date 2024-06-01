@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-export interface INavigationHeader {
-  title: string;
+export interface IScrollingHeader {
+  title?: string;
   children?: ReactNode;
 }

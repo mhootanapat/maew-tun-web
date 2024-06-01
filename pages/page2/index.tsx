@@ -1,5 +1,5 @@
 import NavigationHeader from '@/common/components/header/NavigationHeader';
-import PageTabs from '@/common/components/tabs/PageTabs';
+import ScrollingHeader from '@/common/components/header/ScrollingHeader';
 import MainLayout from '@/layout/main';
 import { Container, Stack, Typography } from '@mui/material';
 import { ReactNode } from 'react';
@@ -9,10 +9,10 @@ const Page1 = () => {
   const { t } = useTranslation();
   return (
     <>
-      <NavigationHeader title={t('page2Title')}>
+      <ScrollingHeader>
         {/* TODO: use loading state when available */}
-        <PageTabs isLoading={false} sxProps={{ mt: 2 }} />
-      </NavigationHeader>
+        <NavigationHeader />
+      </ScrollingHeader>
       <Container>
         <Stack alignItems="center" my={2}>
           <Typography variant="h2" color="text.primary">
