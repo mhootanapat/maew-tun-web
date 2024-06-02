@@ -1,6 +1,6 @@
 import { pageTabInfoList } from '@/common/constants/pageTabList';
 import { IPageTabs } from '@/common/types/common/components/tabs/PageTabs';
-import { Stack, Tab, TabProps, Tabs, TabsProps, styled } from '@mui/material';
+import { Tab, TabProps, Tabs, TabsProps, styled } from '@mui/material';
 import { useRouter } from 'next/router';
 import { ReactNode, memo, useMemo } from 'react';
 
@@ -34,7 +34,9 @@ const StyledTab = styled((props: TabProps) => <Tab disableRipple {...props} />)(
   [theme.breakpoints.up('sm')]: {
     minWidth: 0,
   },
-  fontWeight: theme.typography.fontWeightBold,
+  fontWeight: 900,
+  fontFamily: 'Andale Mono',
+  fontSize: theme.typography.pxToRem(16),
   color: theme.palette.text.primary,
 
   '&:hover': {
@@ -44,7 +46,6 @@ const StyledTab = styled((props: TabProps) => <Tab disableRipple {...props} />)(
 
   '&.Mui-selected': {
     color: theme.palette.colors.orange_light,
-    fontWeight: theme.typography.fontWeightMedium,
   },
 
   '&.Mui-disabled': {
@@ -69,23 +70,21 @@ const PageTabs = ({ sxProps }: IPageTabs) => {
   );
 
   return (
-    <Stack direction="row" spacing={0.5} alignItems="center">
-      <StyledTabs value={activeTab} variant="scrollable" scrollButtons="auto" sx={{ ...sxProps }}>
-        {pageTabInfoList.map((tab) => (
-          <StyledTab
-            key={tab.value}
-            label={tab.title}
-            value={tab.value}
-            onClick={() => {
-              if (activeTab !== tab.value) {
-                router.push(tab.value);
-              }
-            }}
-            disabled={tab.disabled}
-          />
-        ))}
-      </StyledTabs>
-    </Stack>
+    <StyledTabs value={activeTab} variant="scrollable" scrollButtons="auto" sx={{ ...sxProps }}>
+      {pageTabInfoList.map((tab) => (
+        <StyledTab
+          key={tab.value}
+          label={tab.title}
+          value={tab.value}
+          onClick={() => {
+            if (activeTab !== tab.value) {
+              router.push(tab.value);
+            }
+          }}
+          disabled={tab.disabled}
+        />
+      ))}
+    </StyledTabs>
   );
 };
 
