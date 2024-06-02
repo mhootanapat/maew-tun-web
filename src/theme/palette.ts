@@ -38,6 +38,7 @@ const COLORS = {
 
   //#region brown
   brown: '#876445',
+  brown_skin: '#FFE0B5',
   brown_coffee: '#D8AE7E',
   brown_beige: '#FFF2D7',
   brown_dark: '#543310',
@@ -53,7 +54,7 @@ const TEXT = {
 };
 
 const BACKGROUND = {
-  default: COLORS.brown_beige,
+  default: COLORS.brown_skin,
   primary: COLORS.brown,
   navigationHeader: COLORS.brown_beige,
   transparent: {
@@ -91,6 +92,7 @@ declare module '@mui/material/styles' {
       brown_beige: string;
       brown: string;
       brown_dark: string;
+      brown_skin: string;
     };
   }
 

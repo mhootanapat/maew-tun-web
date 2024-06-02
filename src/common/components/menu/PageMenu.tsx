@@ -31,7 +31,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
 const StyledMenu = styled(Menu)(({ theme }) => ({
   zIndex: 100000,
   '& .MuiPaper-root': {
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: theme.palette.colors.brown_beige,
     color: theme.palette.colors.brown_dark,
     shadows: theme.shadows[10],
   },
