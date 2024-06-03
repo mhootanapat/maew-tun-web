@@ -1,16 +1,15 @@
 /* eslint-disable i18next/no-literal-string */
 import { StyledCardBlur } from '@/common/components/CardBlur';
 import useVideoPlayer from '@/common/hooks/useVideoPlayer';
-import theme from '@/theme';
 import { Stack, Typography, styled } from '@mui/material';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const CARD_SPACING = 4;
 
-//#region Page Name
+//#region Page Name Styled
 const StyledPageNameWrapper = styled(StyledCardBlur)(() => ({
-  maxHeight: '250px',
+  maxHeight: '350px',
   minHeight: '200px',
   display: 'flex',
   alignItems: 'center',
@@ -37,11 +36,38 @@ const StyledPageNameTypography = styled(Typography)(() => ({
     fontSize: '32px',
   },
 }));
-//#endregion Page Name
+//#endregion  Page Name Styled
 
-const StyledContactWrapper = styled(StyledCardBlur)(() => ({
+//#region Social Media Styled
+const StyledSocialMediaWrapper = styled(StyledCardBlur)(({ theme }) => ({
   background: theme.palette.colors.brown,
+  height: '100%',
 }));
+
+const StyledSocialMediaTypography = styled(Typography)(({ theme }) => ({
+  fontSize: '24px',
+  color: 'text.primary',
+  backgroundColor: theme.palette.colors.brown_beige,
+  padding: theme.spacing(1),
+  borderRadius: theme.spacing(1.5),
+  display: 'flex',
+  justifyContent: 'center',
+
+  animation: 'blinker 1.5s step-start infinite',
+  '@keyframes blinker': {
+    '50%': {
+      opacity: 0.7,
+    },
+  },
+
+  '@media (max-width:515px)': {
+    fontSize: '20px',
+  },
+  '@media (max-width:415px)': {
+    fontSize: '16px',
+  },
+}));
+//#endregion  Social Media Styled
 
 const StyledLineContactWrapper = styled(StyledCardBlur)(() => ({
   maxHeight: '200px',
@@ -53,7 +79,7 @@ const StyledImageWrapper = styled(StyledCardBlur)(() => ({
   maxHeight: '230px',
 }));
 
-//#region Video
+//#region Video Styled
 const StyledVideo = styled('video')(() => ({
   objectFit: 'cover',
   width: '100%',
@@ -63,7 +89,7 @@ const StyledVideo = styled('video')(() => ({
 const StyledVideoWrapper = styled(StyledCardBlur)(() => ({
   padding: 0,
 }));
-//#endregion Video
+//#endregion Video Styled
 
 const MaewTunFamilyIntro = () => {
   const { t } = useTranslation();
@@ -72,6 +98,9 @@ const MaewTunFamilyIntro = () => {
   return (
     <Stack direction="row" mx={CARD_SPACING} mt={CARD_SPACING - 2} mb={CARD_SPACING} flexWrap="wrap" gap={CARD_SPACING}>
       <Stack spacing={CARD_SPACING} flex={1}>
+        {
+          // #region Page Name
+        }
         <StyledPageNameWrapper>
           <Stack alignItems="center" whiteSpace="nowrap">
             <StyledPageNameTypography>{t('webTitle')}</StyledPageNameTypography>
@@ -80,20 +109,40 @@ const MaewTunFamilyIntro = () => {
             </Typography>
           </Stack>
         </StyledPageNameWrapper>
+        {
+          // #endregion Page Name
+        }
 
-        <StyledContactWrapper>
-          <Typography variant="heading-bold-xl" color="text.primary">
-            contact
-          </Typography>
-        </StyledContactWrapper>
+        {
+          // #region Social Media
+        }
+        <StyledSocialMediaWrapper>
+          <Stack spacing={2}>
+            <StyledSocialMediaTypography>{t('letsGetSocial')}</StyledSocialMediaTypography>
+            <StyledSocialMediaTypography>{t('letsGetSocial')}</StyledSocialMediaTypography>
+            <StyledSocialMediaTypography>{t('letsGetSocial')}</StyledSocialMediaTypography>
+          </Stack>
+        </StyledSocialMediaWrapper>
+        {
+          // #endregion Social Media
+        }
 
+        {
+          // #region Line contact
+        }
         <StyledLineContactWrapper>
           <Typography variant="heading-bold-xl" color="text.primary">
             line
           </Typography>
         </StyledLineContactWrapper>
       </Stack>
+      {
+        // #endregion Line contact
+      }
 
+      {
+        // #region Cat Image
+      }
       <Stack flex={1}>
         <Stack direction="row" mb={CARD_SPACING}>
           <StyledImageWrapper sx={{ mr: CARD_SPACING, mb: CARD_SPACING }}>
@@ -107,7 +156,13 @@ const MaewTunFamilyIntro = () => {
             </Typography>
           </StyledImageWrapper>
         </Stack>
+        {
+          // #endregion Cat Image
+        }
 
+        {
+          // #region Video
+        }
         <StyledVideoWrapper>
           <StyledVideo
             ref={vdoElementRef}
@@ -119,6 +174,9 @@ const MaewTunFamilyIntro = () => {
             muted
           />
         </StyledVideoWrapper>
+        {
+          // #region Video
+        }
       </Stack>
     </Stack>
   );

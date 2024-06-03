@@ -1,7 +1,7 @@
 import NavigationHeader from '@/common/components/header/NavigationHeader';
 import ScrollingHeader from '@/common/components/header/ScrollingHeader';
 import MainLayout from '@/layout/main';
-import MaewTunFamilyIntro from '@/sections/homePage/MaewTunFamilyIntro';
+import MaewTunFamilyIntro from '@/sections/homePage/kaitun/MaewTunFamilyIntro/MaewTunFamilyIntro';
 import { Stack } from '@mui/material';
 import { ReactNode } from 'react';
 
