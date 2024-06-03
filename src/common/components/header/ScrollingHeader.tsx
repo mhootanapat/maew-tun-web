@@ -16,6 +16,7 @@ const StyledHeader = styled(Box)(({ theme }) => ({
   transitionProperty: 'all',
   transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
   transitionDuration: '600ms',
+  borderRadius: `0 0 ${theme.spacing(3)} ${theme.spacing(3)}`,
 
   '&.triggered': {
     background: theme.palette.background.navigationHeader,

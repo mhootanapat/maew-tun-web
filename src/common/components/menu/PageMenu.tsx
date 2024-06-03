@@ -33,6 +33,7 @@ const StyledMenu = styled(Menu)(({ theme }) => ({
     backgroundColor: theme.palette.colors.brown_beige,
     color: theme.palette.colors.brown_dark,
     shadows: theme.shadows[10],
+    borderRadius: theme.spacing(3),
   },
 }));
 
