@@ -47,7 +47,7 @@ const COLORS = {
 
 const TEXT = {
   primary: COLORS.brown_dark,
-  secondary: COLORS.grey_dark,
+  secondary: COLORS.brown_coffee,
   tertiary: COLORS.grey,
   disabled: COLORS.grey_soft,
   white: COLORS.white,
