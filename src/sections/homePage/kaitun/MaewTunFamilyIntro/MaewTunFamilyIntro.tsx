@@ -5,11 +5,11 @@ import { Stack, Typography, styled } from '@mui/material';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-const CARD_SPACING = 4;
+const CARD_SPACING = 3;
 
 //#region Page Name Styled
 const StyledPageNameWrapper = styled(StyledCardBlur)(() => ({
-  maxHeight: '350px',
+  maxHeight: '200px',
   minHeight: '200px',
   display: 'flex',
   alignItems: 'center',
@@ -70,7 +70,7 @@ const StyledSocialMediaTypography = styled(Typography)(({ theme }) => ({
 //#endregion  Social Media Styled
 
 const StyledLineContactWrapper = styled(StyledCardBlur)(() => ({
-  maxHeight: '200px',
+  maxHeight: '100px',
   flex: 'auto',
 }));
 
@@ -118,6 +118,8 @@ const MaewTunFamilyIntro = () => {
         }
         <StyledSocialMediaWrapper>
           <Stack spacing={2}>
+            <StyledSocialMediaTypography>{t('letsGetSocial')}</StyledSocialMediaTypography>
+            <StyledSocialMediaTypography>{t('letsGetSocial')}</StyledSocialMediaTypography>
             <StyledSocialMediaTypography>{t('letsGetSocial')}</StyledSocialMediaTypography>
             <StyledSocialMediaTypography>{t('letsGetSocial')}</StyledSocialMediaTypography>
             <StyledSocialMediaTypography>{t('letsGetSocial')}</StyledSocialMediaTypography>
