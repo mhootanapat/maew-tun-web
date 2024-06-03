@@ -56,7 +56,7 @@ const ScrollingHeader = ({ title = '', children }: IScrollingHeader) => {
               }}
             >
               <Typography
-                variant="body1"
+                variant="body-md"
                 sx={{
                   color: (theme) => theme.palette.text.primary,
                   textOverflow: 'ellipsis',

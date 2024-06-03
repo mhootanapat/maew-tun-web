@@ -13,8 +13,8 @@ const Home = () => (
     </ScrollingHeader>
     <Stack spacing={0}>
       <MaewTunFamilyIntro />
-      {/* 
-      <KaiTunBanner />
+
+      {/* <KaiTunBanner />
       <KaiTunInformation />
 
       <KaiKhemBanner />

@@ -7,7 +7,6 @@ import { MouseEvent, memo, useCallback, useMemo, useState } from 'react';
 //#region StyledButton
 const StyledButton = styled(Button)(({ theme }) => ({
   fontWeight: 900,
-  fontFamily: 'Andale Mono',
   color: theme.palette.colors.orange_light,
 
   '&:hover': {
@@ -39,7 +38,6 @@ const StyledMenu = styled(Menu)(({ theme }) => ({
 
 const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
   fontWeight: 900,
-  fontFamily: 'Andale Mono',
   '&:hover': {
     backgroundColor: theme.palette.colors.orange_opacity_005,
     color: theme.palette.colors.orange,

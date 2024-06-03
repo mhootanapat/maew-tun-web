@@ -15,10 +15,10 @@ const KaiTunInformation = () => {
   return (
     <ContentWrapper>
       <Stack>
-        <Typography variant="h1" color={(theme) => theme.palette.text.white}>
+        <Typography variant="heading-bold-xl" color={(theme) => theme.palette.text.white}>
           {t('kaiTunName')}
         </Typography>
-        <Typography variant="h1" color={(theme) => theme.palette.text.white}>
+        <Typography variant="heading-bold-xl" color={(theme) => theme.palette.text.white}>
           {t('kaiKhemName')}
         </Typography>
       </Stack>

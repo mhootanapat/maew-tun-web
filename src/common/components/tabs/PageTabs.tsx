@@ -35,7 +35,6 @@ const StyledTab = styled((props: TabProps) => <Tab disableRipple {...props} />)(
     minWidth: 0,
   },
   fontWeight: 900,
-  fontFamily: 'Andale Mono',
   fontSize: theme.typography.pxToRem(16),
   color: theme.palette.text.primary,
 

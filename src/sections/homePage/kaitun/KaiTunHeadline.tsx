@@ -15,7 +15,12 @@ const KaiTunHeadline = () => {
   const { t } = useTranslation();
   return (
     <HeadlineWrapper>
-      <Typography variant="h1" fontWeight={100} fontSize="10vw" color={(theme) => theme.palette.text.white}>
+      <Typography
+        variant="heading-bold-xl"
+        fontWeight={100}
+        fontSize="10vw"
+        color={(theme) => theme.palette.text.white}
+      >
         {t('kaiTunName')}
       </Typography>
     </HeadlineWrapper>
