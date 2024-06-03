@@ -15,13 +15,13 @@ const Page1 = () => {
       </ScrollingHeader>
       <Container>
         <Stack alignItems="center" my={2}>
-          <Typography variant="h2" color="text.primary">
+          <Typography variant="heading-bold-lg" color="text.primary">
             {t('kaiTunName')}
           </Typography>
-          <Typography variant="h2" color="text.secondary">
+          <Typography variant="heading-bold-lg" color="text.secondary">
             {t('kaiKhemName')}
           </Typography>
-          <Typography variant="h2" color="text.secondary">
+          <Typography variant="heading-bold-lg" color="text.secondary">
             {t('kaiKhemName')}
           </Typography>
         </Stack>
