@@ -1,6 +1,7 @@
 /* eslint-disable i18next/no-literal-string */
 import { StyledCardBlur } from '@/common/components/CardBlur';
 import useVideoPlayer from '@/common/hooks/useVideoPlayer';
+import SocialMedia from '@/sections/homePage/kaitun/MaewTunFamilyIntro/SocialMedia/SocialMedia';
 import { Stack, Typography, styled } from '@mui/material';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -38,37 +39,6 @@ const StyledPageNameTypography = styled(Typography)(() => ({
 }));
 //#endregion  Page Name Styled
 
-//#region Social Media Styled
-const StyledSocialMediaWrapper = styled(StyledCardBlur)(({ theme }) => ({
-  background: theme.palette.colors.brown,
-  height: '100%',
-}));
-
-const StyledSocialMediaTypography = styled(Typography)(({ theme }) => ({
-  fontSize: '24px',
-  color: 'text.primary',
-  backgroundColor: theme.palette.colors.brown_beige,
-  padding: theme.spacing(1),
-  borderRadius: theme.spacing(1.5),
-  display: 'flex',
-  justifyContent: 'center',
-
-  animation: 'blinker 1.5s step-start infinite',
-  '@keyframes blinker': {
-    '50%': {
-      opacity: 0.7,
-    },
-  },
-
-  '@media (max-width:515px)': {
-    fontSize: '20px',
-  },
-  '@media (max-width:415px)': {
-    fontSize: '16px',
-  },
-}));
-//#endregion  Social Media Styled
-
 const StyledLineContactWrapper = styled(StyledCardBlur)(() => ({
   maxHeight: '100px',
   flex: 'auto',
@@ -88,6 +58,7 @@ const StyledVideo = styled('video')(() => ({
 
 const StyledVideoWrapper = styled(StyledCardBlur)(() => ({
   padding: 0,
+  maxHeight: '800px',
 }));
 //#endregion Video Styled
 
@@ -116,15 +87,7 @@ const MaewTunFamilyIntro = () => {
         {
           // #region Social Media
         }
-        <StyledSocialMediaWrapper>
-          <Stack spacing={2}>
-            <StyledSocialMediaTypography>{t('letsGetSocial')}</StyledSocialMediaTypography>
-            <StyledSocialMediaTypography>{t('letsGetSocial')}</StyledSocialMediaTypography>
-            <StyledSocialMediaTypography>{t('letsGetSocial')}</StyledSocialMediaTypography>
-            <StyledSocialMediaTypography>{t('letsGetSocial')}</StyledSocialMediaTypography>
-            <StyledSocialMediaTypography>{t('letsGetSocial')}</StyledSocialMediaTypography>
-          </Stack>
-        </StyledSocialMediaWrapper>
+        <SocialMedia />
         {
           // #endregion Social Media
         }
