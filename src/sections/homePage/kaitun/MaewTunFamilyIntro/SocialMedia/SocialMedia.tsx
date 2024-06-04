@@ -55,9 +55,12 @@ const SocialMedia = () => {
 
   return (
     <StyledSocialMediaWrapper>
-      <Stack spacing={2}>
+      <Stack spacing={8} alignItems="center" height="100%">
         <StyledSocialMediaTitle>{t('letsGetSocial')}</StyledSocialMediaTitle>
         <SocialMediaItem />
+        <Stack>
+          <StyledSocialMediaTitle>{t('letsGetSocial')}</StyledSocialMediaTitle>
+        </Stack>
       </Stack>
     </StyledSocialMediaWrapper>
   );
