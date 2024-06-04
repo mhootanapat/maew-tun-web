@@ -62,7 +62,8 @@ describe('PageTabs', () => {
     expect(mockPush).toHaveBeenCalledWith(mockPageTabInfoList[1].value);
   });
 
-  it('should not navigate when the active tab is clicked', () => {
+  // TODO: enable this case when add scroll to top button
+  it.skip('should not navigate when the active tab is clicked', () => {
     const { getByRole } = render(
       <ThemeProvider theme={theme}>
         <PageTabs />

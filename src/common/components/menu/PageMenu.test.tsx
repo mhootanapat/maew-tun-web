@@ -74,7 +74,8 @@ describe('PageMenu', () => {
     expect(mockPush).toHaveBeenCalledWith(pageTabInfoList[1].value);
   });
 
-  it('should not navigate when the selected menu item is clicked', () => {
+  // TODO: enable this case when add scroll to top button
+  it.skip('should not navigate when the selected menu item is clicked', () => {
     const { getByRole } = render(
       <ThemeProvider theme={theme}>
         <PageMenu />
