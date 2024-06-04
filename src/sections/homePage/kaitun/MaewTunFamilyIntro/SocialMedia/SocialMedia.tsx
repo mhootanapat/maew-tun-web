@@ -18,6 +18,7 @@ const StyledSocialMediaTitle = styled(Typography)(({ theme }) => ({
   borderRadius: theme.spacing(1.5),
   display: 'flex',
   justifyContent: 'center',
+  textAlign: 'center',
   animation: 'heartbeat 5s cubic-bezier(0.64, 0, 0.78, 0) 0s infinite normal none',
 
   '@keyframes heartbeat': {
@@ -56,19 +57,17 @@ const SocialMedia = () => {
 
   return (
     <StyledSocialMediaWrapper>
-      <Stack alignItems="center" height="100%">
+      <Stack spacing={8}>
         <StyledSocialMediaTitle>{t('letsGetSocial')}</StyledSocialMediaTitle>
-        <Stack width="100%" spacing={6} mt={8}>
-          {socialMediaList.map((item) => (
-            <SocialMediaItem
-              key={item.platformName}
-              iconPath={item.iconPath}
-              altValue={item.altValue}
-              platformName={item.platformName}
-            />
-          ))}
-        </Stack>
-        <Stack>{/* <StyledSocialMediaTitle>{t('letsGetSocial')}</StyledSocialMediaTitle> */}</Stack>
+        {socialMediaList.map((item) => (
+          <SocialMediaItem
+            key={item.platformName}
+            iconPath={item.iconPath}
+            altValue={item.altValue}
+            platformName={item.platformName}
+            borderColor={item.borderColor}
+          />
+        ))}
       </Stack>
     </StyledSocialMediaWrapper>
   );

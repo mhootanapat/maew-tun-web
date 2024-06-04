@@ -80,9 +80,7 @@ const PageMenu = ({ boxProps }: IPageMenu) => {
               key={tab.value}
               onClick={() => {
                 handleClose();
-                if (!isSelected) {
-                  router.push(tab.value);
-                }
+                router.push(tab.value);
               }}
               disabled={tab.disabled}
             >
