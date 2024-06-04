@@ -1,18 +1,22 @@
 /* eslint-disable no-console */
 import ImageWithFallback from '@/common/components/ImageWithFallback';
-import { Box, Stack, styled } from '@mui/material';
+import { ISocialMediaItem } from '@/common/types/sections/SocialMediaItem';
+import { Box, Stack, Typography, styled } from '@mui/material';
 import { memo } from 'react';
 
 const StyledCircleFrame = styled(Box)(({ theme }) => ({
   width: '90%',
-  minHeight: '200px',
-  borderRadius: theme.spacing(5),
+  minHeight: '100px',
+  borderRadius: theme.spacing(3),
   background: 'white',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
 }));
 
-const SocialMediaItem = () => (
+const SocialMediaItem = ({ iconPath, altValue, platformName }: ISocialMediaItem) => (
   <Box width="100%" height="100%" display="flex" justifyContent="center" alignItems="center">
-    <Stack direction="row" position="absolute" mt={-25}>
+    <Stack direction="row" position="absolute" mt={-12.5}>
       <ImageWithFallback
         src="/apple-touch-icon.png"
         alt="Maew Tun Logo"
@@ -20,15 +24,11 @@ const SocialMediaItem = () => (
         height={80}
         style={{ borderRadius: '50%' }}
       />
-      <ImageWithFallback
-        src="/assets/icons/facebook-icon.png"
-        alt="Facebook Logo"
-        width={80}
-        height={80}
-        style={{ borderRadius: '50%' }}
-      />
+      <ImageWithFallback src={iconPath} alt={altValue} width={80} height={80} style={{ borderRadius: '50%' }} />
     </Stack>
-    <StyledCircleFrame />
+    <StyledCircleFrame>
+      <Typography mt={3}>{platformName}</Typography>
+    </StyledCircleFrame>
   </Box>
 );
 

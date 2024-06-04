@@ -1,4 +1,5 @@
 import { StyledCardBlur } from '@/common/components/CardBlur';
+import { socialMediaList } from '@/common/constants/socialMediaList';
 import SocialMediaItem from '@/sections/homePage/kaitun/MaewTunFamilyIntro/SocialMedia/SocialMediaItem';
 import { Stack, Typography, styled } from '@mui/material';
 import { memo } from 'react';
@@ -55,12 +56,19 @@ const SocialMedia = () => {
 
   return (
     <StyledSocialMediaWrapper>
-      <Stack spacing={8} alignItems="center" height="100%">
+      <Stack alignItems="center" height="100%">
         <StyledSocialMediaTitle>{t('letsGetSocial')}</StyledSocialMediaTitle>
-        <SocialMediaItem />
-        <Stack>
-          <StyledSocialMediaTitle>{t('letsGetSocial')}</StyledSocialMediaTitle>
+        <Stack width="100%" spacing={6} mt={8}>
+          {socialMediaList.map((item) => (
+            <SocialMediaItem
+              key={item.platformName}
+              iconPath={item.iconPath}
+              altValue={item.altValue}
+              platformName={item.platformName}
+            />
+          ))}
         </Stack>
+        <Stack>{/* <StyledSocialMediaTitle>{t('letsGetSocial')}</StyledSocialMediaTitle> */}</Stack>
       </Stack>
     </StyledSocialMediaWrapper>
   );
