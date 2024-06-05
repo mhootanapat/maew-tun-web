@@ -3,4 +3,5 @@ import { ParallaxBanner } from 'react-scroll-parallax';
 
 export const StyledParallaxBanner = styled(ParallaxBanner)(() => ({
   height: '100vh',
+  width: '100vw',
 }));

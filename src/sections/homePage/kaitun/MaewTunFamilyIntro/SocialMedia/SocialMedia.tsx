@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 const StyledSocialMediaWrapper = styled(StyledCardBlur)(({ theme }) => ({
   background: theme.palette.colors.brown,
   height: '100%',
+  overflow: 'visible',
 }));
 
 const StyledSocialMediaTitle = styled(Typography)(({ theme }) => ({

@@ -1,16 +1,17 @@
 /* eslint-disable i18next/no-literal-string */
 import { StyledCardBlur } from '@/common/components/CardBlur';
 import useVideoPlayer from '@/common/hooks/useVideoPlayer';
+import LineContact from '@/sections/homePage/kaitun/MaewTunFamilyIntro/LineContact/LineContact';
 import SocialMedia from '@/sections/homePage/kaitun/MaewTunFamilyIntro/SocialMedia/SocialMedia';
-import { Stack, Typography, styled } from '@mui/material';
+import { Box, Stack, Typography, styled } from '@mui/material';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-const CARD_SPACING = 3;
+export const MAEW_TUN_INTRO_CARD_SPACING = 3;
 
 //#region Page Name Styled
 const StyledPageNameWrapper = styled(StyledCardBlur)(() => ({
-  maxHeight: '200px',
+  maxHeight: '250px',
   minHeight: '200px',
   display: 'flex',
   alignItems: 'center',
@@ -39,11 +40,6 @@ const StyledPageNameTypography = styled(Typography)(() => ({
 }));
 //#endregion  Page Name Styled
 
-const StyledLineContactWrapper = styled(StyledCardBlur)(() => ({
-  maxHeight: '100px',
-  flex: 'auto',
-}));
-
 const StyledImageWrapper = styled(StyledCardBlur)(() => ({
   padding: 0,
   maxHeight: '230px',
@@ -67,83 +63,72 @@ const MaewTunFamilyIntro = () => {
   const { vdoElementRef, setFocus, onEndedLoop } = useVideoPlayer();
 
   return (
-    <Stack direction="row" mx={CARD_SPACING} mt={CARD_SPACING - 2} mb={CARD_SPACING} flexWrap="wrap" gap={CARD_SPACING}>
-      <Stack spacing={CARD_SPACING} flex={1}>
-        {
-          // #region Page Name
-        }
-        <StyledPageNameWrapper>
-          <Stack alignItems="center" whiteSpace="nowrap">
-            <StyledPageNameTypography>{t('webTitle')}</StyledPageNameTypography>
-            <Typography variant="body-bold-md" color="text.primary">
-              {t('greeting')}
-            </Typography>
-          </Stack>
-        </StyledPageNameWrapper>
-        {
-          // #endregion Page Name
-        }
-
-        {
-          // #region Social Media
-        }
-        <SocialMedia />
-        {
-          // #endregion Social Media
-        }
-
-        {
-          // #region Line contact
-        }
-        <StyledLineContactWrapper>
-          <Typography variant="heading-bold-xl" color="text.primary">
-            line
-          </Typography>
-        </StyledLineContactWrapper>
-      </Stack>
-      {
-        // #endregion Line contact
-      }
-
-      {
-        // #region Cat Image
-      }
-      <Stack flex={1}>
-        <Stack direction="row" mb={CARD_SPACING}>
-          <StyledImageWrapper sx={{ mr: CARD_SPACING, mb: CARD_SPACING }}>
-            <Typography variant="heading-bold-xl" color="text.primary">
-              tun image
-            </Typography>
-          </StyledImageWrapper>
-          <StyledImageWrapper>
-            <Typography variant="heading-bold-xl" color="text.primary">
-              khem image
-            </Typography>
-          </StyledImageWrapper>
+    <Box mx={MAEW_TUN_INTRO_CARD_SPACING}>
+      <Stack
+        direction="row"
+        mt={MAEW_TUN_INTRO_CARD_SPACING - 2}
+        mb={MAEW_TUN_INTRO_CARD_SPACING}
+        flexWrap="wrap"
+        gap={MAEW_TUN_INTRO_CARD_SPACING}
+      >
+        <Stack spacing={MAEW_TUN_INTRO_CARD_SPACING} flex={1}>
+          {
+            // #region Page Name
+          }
+          <StyledPageNameWrapper>
+            <Stack alignItems="center" whiteSpace="nowrap">
+              <StyledPageNameTypography>{t('webTitle')}</StyledPageNameTypography>
+              <Typography variant="body-bold-md" color="text.primary">
+                {t('greeting')}
+              </Typography>
+            </Stack>
+          </StyledPageNameWrapper>
+          {
+            // #endregion Page Name
+          }
+          <SocialMedia />
+          <LineContact />
         </Stack>
         {
-          // #endregion Cat Image
+          // #region Cat Image
         }
+        <Stack flex={1}>
+          <Stack direction="row" mb={MAEW_TUN_INTRO_CARD_SPACING}>
+            <StyledImageWrapper sx={{ mr: MAEW_TUN_INTRO_CARD_SPACING, mb: MAEW_TUN_INTRO_CARD_SPACING }}>
+              <Typography variant="heading-bold-xl" color="text.primary">
+                tun image
+              </Typography>
+            </StyledImageWrapper>
+            <StyledImageWrapper>
+              <Typography variant="heading-bold-xl" color="text.primary">
+                khem image
+              </Typography>
+            </StyledImageWrapper>
+          </Stack>
+          {
+            // #endregion Cat Image
+          }
 
-        {
-          // #region Video
-        }
-        <StyledVideoWrapper>
-          <StyledVideo
-            ref={vdoElementRef}
-            onMouseOver={() => setFocus(true)}
-            onMouseOut={() => setFocus(false)}
-            src="/assets/videos/tun-khem-profile-video.mp4"
-            onEnded={onEndedLoop}
-            autoPlay
-            muted
-          />
-        </StyledVideoWrapper>
-        {
-          // #region Video
-        }
+          {
+            // #region Video
+          }
+          <StyledVideoWrapper>
+            <StyledVideo
+              ref={vdoElementRef}
+              onMouseOver={() => setFocus(true)}
+              onMouseOut={() => setFocus(false)}
+              src="/assets/videos/tun-khem-profile-video.mp4"
+              onEnded={onEndedLoop}
+              autoPlay
+              muted
+            />
+          </StyledVideoWrapper>
+          {
+            // #region Video
+          }
+        </Stack>
       </Stack>
-    </Stack>
+    </Box>
   );
 };
 
