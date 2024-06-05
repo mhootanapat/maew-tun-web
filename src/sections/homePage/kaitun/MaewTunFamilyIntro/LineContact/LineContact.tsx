@@ -39,6 +39,57 @@ const StyledLineText = styled(Typography)(() => ({
   },
 }));
 
+const RIBBON_BORDER_STYLE = '3px solid #BF9F7C';
+const Ribbon = styled('div')(({ theme }) => ({
+  position: 'absolute',
+  right: ' -20px',
+  top: '-5px',
+  zIndex: 1,
+  overflow: 'hidden',
+  width: '75px',
+  height: '75px',
+  textAlign: 'right',
+
+  span: {
+    fontSize: '10px',
+    fontWeight: 'bold',
+    color: theme.palette.colors.brown_dark,
+    textTransform: 'uppercase',
+    textAlign: 'center',
+    lineHeight: '20px',
+    transform: 'rotate(45deg)',
+    WebkitTransform: 'rotate(45deg)',
+    width: '100px',
+    display: 'block',
+    background: 'linear-gradient(#EDD0A4 0%, #BF9F7C 100%)',
+    boxShadow: '0 3px 10px -5px rgba(0, 0, 0, 1)',
+    position: 'absolute',
+    top: '19px; right: -21px',
+
+    ':before': {
+      content: "''",
+      position: 'absolute',
+      left: '0px; top: 100%',
+      zIndex: -1,
+      borderLeft: RIBBON_BORDER_STYLE,
+      borderRight: RIBBON_BORDER_STYLE,
+      borderBottom: RIBBON_BORDER_STYLE,
+      borderTop: RIBBON_BORDER_STYLE,
+    },
+
+    ':after': {
+      content: "''",
+      position: 'absolute',
+      right: '0px; top: 100%',
+      zIndex: -1,
+      borderLeft: RIBBON_BORDER_STYLE,
+      borderRight: RIBBON_BORDER_STYLE,
+      borderBottom: RIBBON_BORDER_STYLE,
+      borderTop: RIBBON_BORDER_STYLE,
+    },
+  },
+}));
+
 const LineContact = () => {
   const { t } = useTranslation();
 
@@ -57,7 +108,10 @@ const LineContact = () => {
           style={{ width: '100%', minWidth: '100px', height: '100%', borderRadius: '24px' }}
         />
       </Box>
-      <Box display="flex" alignItems="center" justifyContent="center" mx={2} width="100%">
+      <Box display="flex" alignItems="center" justifyContent="center" mx={2} width="100%" position="relative">
+        <Ribbon>
+          <span>{t('forWorkOnly')}</span>
+        </Ribbon>
         <StyledLineText>{t('line')}</StyledLineText>
       </Box>
     </StyledLineContactWrapper>
