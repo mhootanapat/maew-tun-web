@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import ImageWithFallback from '@/common/components/ImageWithFallback';
 import { ISocialMediaItem } from '@/common/types/sections/SocialMediaItem';
 import { Box, Stack, Typography, styled } from '@mui/material';
@@ -21,7 +20,6 @@ const StyledCircleFrame = styled(Box)(({ theme }) => ({
 
 const StyledSocialMediaName = styled(Typography)(() => ({
   fontSize: '24px',
-  fontWeight: 500,
   '@media (max-width:515px)': {
     fontSize: '20px',
   },
@@ -32,6 +30,7 @@ const StyledSocialMediaName = styled(Typography)(() => ({
 
 const StyledSocialMediaButton = styled(Link)(({ theme }) => ({
   color: theme.palette.text.primary,
+  textDecoration: 'none',
   ':hover': {
     filter: 'brightness(110%)',
     transform: 'translateY(-6px)',
@@ -45,7 +44,7 @@ const StyledSocialMediaButton = styled(Link)(({ theme }) => ({
 }));
 
 const SocialMediaItem = ({ iconPath, altValue, platformName, borderColor, profileUrl }: ISocialMediaItem) => (
-  <StyledSocialMediaButton href={profileUrl} target="_blank" rel="noopener noreferrer">
+  <StyledSocialMediaButton href={profileUrl} target="_blank" rel="noopener noreferrer" data-testid="social-media-item">
     <Box width="100%" height="100%" display="flex" justifyContent="center" alignItems="center">
       <Stack direction="row" position="absolute" mt={-12.5}>
         <ImageWithFallback
@@ -57,7 +56,7 @@ const SocialMediaItem = ({ iconPath, altValue, platformName, borderColor, profil
         />
         <ImageWithFallback src={iconPath} alt={altValue} width={imageWidth} height={imageHeight} style={imageStyle} />
       </Stack>
-      <StyledCircleFrame border={`8px ridge ${borderColor}`}>
+      <StyledCircleFrame border={`8px ridge ${borderColor}`} data-testid="social-media-item-frame">
         <StyledSocialMediaName mt={3}>{platformName}</StyledSocialMediaName>
       </StyledCircleFrame>
     </Box>

@@ -13,13 +13,7 @@ const customJestConfig = {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
   collectCoverage: false,
-  collectCoverageFrom: [
-    './src/common/components/**',
-    './src/utils/**',
-
-    // ignored
-    '!./src/common/utils/createEmotionCache.ts',
-  ],
+  collectCoverageFrom: ['./src/common/components/**', './src/common/hooks/**', './src/utils/**', './src/sections/**'],
   modulePathIgnorePatterns: ['__mocks__', '__snapshots__'],
 };
 
