@@ -1,6 +1,6 @@
 import { StyledCardBlur } from '@/common/components/CardBlur';
 import { socialMediaList } from '@/common/constants/socialMediaList';
-import SocialMediaItem from '@/sections/homePage/kaitun/MaewTunFamilyIntro/SocialMedia/SocialMediaItem';
+import SocialMediaItem from '@/sections/homePage/MaewTunFamilyIntro/SocialMedia/SocialMediaItem';
 import { Stack, Typography, styled } from '@mui/material';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';

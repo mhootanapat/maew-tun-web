@@ -1,5 +1,5 @@
 import { StyledParallaxBanner } from '@/common/components/Parallax';
-import KaiTunHeadLine from '@/sections/homePage/kaitun/KaiTunHeadline';
+import KaiTunHeadLine from '@/sections/homePage/Kaitun/KaiTunHeadline';
 import { Box, styled } from '@mui/material';
 import { memo } from 'react';
 import { BannerLayer } from 'react-scroll-parallax';

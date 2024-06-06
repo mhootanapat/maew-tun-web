@@ -1,11 +1,11 @@
 import NavigationHeader from '@/common/components/header/NavigationHeader';
 import ScrollingHeader from '@/common/components/header/ScrollingHeader';
 import MainLayout from '@/layout/main';
-import KaiKhemBanner from '@/sections/homePage/kaikem/KaiKhemBanner';
-import KaiKhemInformation from '@/sections/homePage/kaikem/KaiKhemInformation';
-import KaiTunBanner from '@/sections/homePage/kaitun/KaiTunBanner';
-import KaiTunInformation from '@/sections/homePage/kaitun/KaiTunInformation';
-import MaewTunFamilyIntro from '@/sections/homePage/kaitun/MaewTunFamilyIntro/MaewTunFamilyIntro';
+import KaiKhemBanner from '@/sections/homePage/Kaikhem/KaiKhemBanner';
+import KaiKhemInformation from '@/sections/homePage/Kaikhem/KaiKhemInformation';
+import KaiTunBanner from '@/sections/homePage/Kaitun/KaiTunBanner';
+import KaiTunInformation from '@/sections/homePage/Kaitun/KaiTunInformation';
+import MaewTunFamilyIntro from '@/sections/homePage/MaewTunFamilyIntro';
 import { Stack } from '@mui/material';
 import { ReactNode } from 'react';
 

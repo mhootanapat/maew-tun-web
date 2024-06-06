@@ -1,8 +1,8 @@
 /* eslint-disable i18next/no-literal-string */
 import { StyledCardBlur } from '@/common/components/CardBlur';
 import useVideoPlayer from '@/common/hooks/useVideoPlayer';
-import LineContact from '@/sections/homePage/kaitun/MaewTunFamilyIntro/LineContact/LineContact';
-import SocialMedia from '@/sections/homePage/kaitun/MaewTunFamilyIntro/SocialMedia/SocialMedia';
+import LineContact from '@/sections/homePage/MaewTunFamilyIntro/LineContact/LineContact';
+import SocialMedia from '@/sections/homePage/MaewTunFamilyIntro/SocialMedia/SocialMedia';
 import { Box, Stack, Typography, styled } from '@mui/material';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
