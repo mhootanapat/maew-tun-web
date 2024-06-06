@@ -1,7 +1,7 @@
 import ImageWithFallback from '@/common/components/ImageWithFallback';
 import { MAEW_TUN_INTRO_CARD_SPACING } from '@/sections/homePage/kaitun/MaewTunFamilyIntro/MaewTunFamilyIntro';
 import { Box, Typography, styled } from '@mui/material';
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const MAEW_TUN_INTRO_LINE_CONTACT_CARD_HEIGHT = 100;
@@ -90,25 +90,46 @@ const Ribbon = styled('div')(({ theme }) => ({
   },
 }));
 
+const StyledLineQRImage = styled(ImageWithFallback)(({ theme }) => ({
+  maxHeight: MAEW_TUN_INTRO_LINE_CONTACT_CARD_HEIGHT,
+  maxWidth: MAEW_TUN_INTRO_LINE_CONTACT_CARD_HEIGHT,
+  width: '100%',
+  minWidth: '100px',
+  height: '100%',
+  borderRadius: theme.spacing(3),
+  WebkitTransitionProperty: 'all',
+  WebkitTransitionDuration: '0.3s',
+  WebkitTransitionTimingFunction: 'ease',
+  display: 'block',
+  zIndex: 999,
+
+  ':hover': {
+    '@media (min-width:350px)': {
+      transform: 'scale(3)',
+      transformOrigin: 'left bottom',
+    },
+  },
+}));
+
 const LineContact = () => {
   const { t } = useTranslation();
+  const handleLineContainerClick = useCallback(() => {
+    // eslint-disable-next-line no-console
+    console.log('test click line');
+  }, []);
 
   return (
     <StyledLineContactWrapper>
+      <StyledLineQRImage src="/assets/images/friend-siriyakorn-line-qr.jpg" alt="Line QR" width={10} height={10} />
       <Box
-        maxHeight={MAEW_TUN_INTRO_LINE_CONTACT_CARD_HEIGHT}
-        maxWidth={MAEW_TUN_INTRO_LINE_CONTACT_CARD_HEIGHT}
-        borderRadius={(theme) => theme.spacing(3)}
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        mx={2}
+        width="100%"
+        position="relative"
+        onClick={handleLineContainerClick}
       >
-        <ImageWithFallback
-          src="/assets/images/friend-siriyakorn-line-qr.jpg"
-          alt="Line QR"
-          width={10}
-          height={10}
-          style={{ width: '100%', minWidth: '100px', height: '100%', borderRadius: '24px' }}
-        />
-      </Box>
-      <Box display="flex" alignItems="center" justifyContent="center" mx={2} width="100%" position="relative">
         <Ribbon>
           <span>{t('forWorkOnly')}</span>
         </Ribbon>
