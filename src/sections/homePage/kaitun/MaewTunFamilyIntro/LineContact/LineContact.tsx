@@ -1,4 +1,5 @@
 import ImageWithFallback from '@/common/components/ImageWithFallback';
+import { lineAddFriendUrl } from '@/common/constants/socialMediaList';
 import { MAEW_TUN_INTRO_CARD_SPACING } from '@/sections/homePage/kaitun/MaewTunFamilyIntro/MaewTunFamilyIntro';
 import { Box, Typography, styled } from '@mui/material';
 import { memo, useCallback } from 'react';
@@ -114,8 +115,7 @@ const StyledLineQRImage = styled(ImageWithFallback)(({ theme }) => ({
 const LineContact = () => {
   const { t } = useTranslation();
   const handleLineContainerClick = useCallback(() => {
-    // eslint-disable-next-line no-console
-    console.log('test click line');
+    window.open(lineAddFriendUrl, '_blank', 'noopener,noreferrer');
   }, []);
 
   return (

@@ -3,4 +3,5 @@ export interface ISocialMediaItem {
   iconPath: string;
   altValue: string;
   borderColor: string;
+  profileUrl: string;
 }

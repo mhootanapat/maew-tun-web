@@ -1,7 +1,8 @@
 /* eslint-disable no-console */
 import ImageWithFallback from '@/common/components/ImageWithFallback';
 import { ISocialMediaItem } from '@/common/types/sections/SocialMediaItem';
-import { Box, Button, Stack, Typography, styled } from '@mui/material';
+import { Box, Stack, Typography, styled } from '@mui/material';
+import Link from 'next/link';
 import { CSSProperties, memo } from 'react';
 
 const imageStyle: CSSProperties = { borderRadius: '50%', boxShadow: '0px 4px 13px 5px rgba(172, 172, 172, 0.5)' };
@@ -20,6 +21,7 @@ const StyledCircleFrame = styled(Box)(({ theme }) => ({
 
 const StyledSocialMediaName = styled(Typography)(() => ({
   fontSize: '24px',
+  fontWeight: 500,
   '@media (max-width:515px)': {
     fontSize: '20px',
   },
@@ -28,7 +30,7 @@ const StyledSocialMediaName = styled(Typography)(() => ({
   },
 }));
 
-const StyledSocialMediaButton = styled(Button)(({ theme }) => ({
+const StyledSocialMediaButton = styled(Link)(({ theme }) => ({
   color: theme.palette.text.primary,
   ':hover': {
     filter: 'brightness(110%)',
@@ -42,8 +44,8 @@ const StyledSocialMediaButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-const SocialMediaItem = ({ iconPath, altValue, platformName, borderColor }: ISocialMediaItem) => (
-  <StyledSocialMediaButton disableRipple>
+const SocialMediaItem = ({ iconPath, altValue, platformName, borderColor, profileUrl }: ISocialMediaItem) => (
+  <StyledSocialMediaButton href={profileUrl} target="_blank" rel="noopener noreferrer">
     <Box width="100%" height="100%" display="flex" justifyContent="center" alignItems="center">
       <Stack direction="row" position="absolute" mt={-12.5}>
         <ImageWithFallback

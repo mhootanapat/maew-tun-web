@@ -67,6 +67,7 @@ const SocialMedia = () => {
             altValue={item.altValue}
             platformName={item.platformName}
             borderColor={item.borderColor}
+            profileUrl={item.profileUrl}
           />
         ))}
       </Stack>
