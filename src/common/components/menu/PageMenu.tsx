@@ -67,7 +67,7 @@ const PageMenu = ({ boxProps }: IPageMenu) => {
   }, []);
 
   return (
-    <Box {...boxProps}>
+    <Box {...boxProps} data-testid="page-menu-container">
       <StyledButton onClick={handleClick} disableRipple>
         {title}
       </StyledButton>

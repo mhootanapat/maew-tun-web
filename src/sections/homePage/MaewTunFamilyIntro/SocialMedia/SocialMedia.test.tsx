@@ -41,4 +41,19 @@ describe('SocialMedia Component', () => {
       expect(socialMediaItem).toHaveAttribute('href', item.profileUrl);
     });
   });
+
+  test('renders correctly with styled wrapper', () => {
+    const { container } = render(
+      <ThemeProvider theme={theme}>
+        <SocialMedia />
+      </ThemeProvider>
+    );
+
+    const wrapper = container.querySelector('.MuiCard-root');
+    expect(wrapper).toHaveStyle(`
+          background: ${theme.palette.colors.brown};
+          height: 100%;
+          overflow: visible;
+        `);
+  });
 });

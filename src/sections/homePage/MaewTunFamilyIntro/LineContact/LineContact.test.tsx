@@ -57,4 +57,22 @@ describe('LineContact Component', () => {
     // NOTE: Restore the original window.open function
     window.open = originalOpen;
   });
+
+  test('handles missing Line QR code image gracefully', () => {
+    const { getByAltText, getByText } = render(
+      <ThemeProvider theme={theme}>
+        <LineContact />
+      </ThemeProvider>
+    );
+
+    // NOTE: Check if the QR code image is rendered
+    const qrImage = getByAltText('Line QR');
+
+    // NOTE: Remove the QR code image from the DOM
+    qrImage.remove();
+
+    // NOTE: Check that the Line text is still rendered
+    const lineText = getByText(t('line'));
+    expect(lineText).toBeInTheDocument();
+  });
 });

@@ -42,7 +42,7 @@ const ScrollingHeader = ({ title = '', children }: IScrollingHeader) => {
   const { isTriggered, scrollClassName } = useScrollDirection();
 
   return (
-    <StyledHeader className={scrollClassName}>
+    <StyledHeader className={scrollClassName} data-testid="scrolling-header">
       <Container>
         <HeaderWrapper>
           {isTriggered && (

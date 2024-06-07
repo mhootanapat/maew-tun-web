@@ -69,7 +69,13 @@ const PageTabs = ({ sxProps }: IPageTabs) => {
   );
 
   return (
-    <StyledTabs value={activeTab} variant="scrollable" scrollButtons="auto" sx={{ ...sxProps }}>
+    <StyledTabs
+      value={activeTab}
+      variant="scrollable"
+      scrollButtons="auto"
+      sx={{ ...sxProps }}
+      data-testid="page-tab-list"
+    >
       {pageTabInfoList.map((tab) => (
         <StyledTab
           key={tab.value}
