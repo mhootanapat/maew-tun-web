@@ -1,5 +1,5 @@
 import { lineAddFriendUrl } from '@/common/constants/socialMediaList';
-import LineContact from '@/sections/homePage/MaewTunFamilyIntro/LineContact/LineContact';
+import LineContact from '@/sections/homePage/MaewTunFamilyIntro/LineContact';
 import theme from '@/theme';
 import { ThemeProvider } from '@mui/material';
 import { fireEvent, render } from '@testing-library/react';

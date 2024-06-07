@@ -1,7 +1,7 @@
-/* eslint-disable i18next/no-literal-string */
 import { StyledCardBlur } from '@/common/components/CardBlur';
 import useVideoPlayer from '@/common/hooks/useVideoPlayer';
-import LineContact from '@/sections/homePage/MaewTunFamilyIntro/LineContact/LineContact';
+import CatImageFrame from '@/sections/homePage/MaewTunFamilyIntro/CatImageFrame';
+import LineContact from '@/sections/homePage/MaewTunFamilyIntro/LineContact';
 import SocialMedia from '@/sections/homePage/MaewTunFamilyIntro/SocialMedia/SocialMedia';
 import { Box, Stack, Typography, styled } from '@mui/material';
 import { memo } from 'react';
@@ -39,11 +39,6 @@ const StyledPageNameTypography = styled(Typography)(() => ({
   },
 }));
 //#endregion  Page Name Styled
-
-const StyledImageWrapper = styled(StyledCardBlur)(() => ({
-  padding: 0,
-  maxHeight: '230px',
-}));
 
 //#region Video Styled
 const StyledVideo = styled('video')(() => ({
@@ -89,25 +84,12 @@ const MaewTunFamilyIntro = () => {
           <SocialMedia />
           <LineContact />
         </Stack>
-        {
-          // #region Cat Image
-        }
+
         <Stack flex={1}>
-          <Stack direction="row" mb={MAEW_TUN_INTRO_CARD_SPACING}>
-            <StyledImageWrapper sx={{ mr: MAEW_TUN_INTRO_CARD_SPACING, mb: MAEW_TUN_INTRO_CARD_SPACING }}>
-              <Typography variant="heading-bold-xl" color="text.primary">
-                tun image
-              </Typography>
-            </StyledImageWrapper>
-            <StyledImageWrapper>
-              <Typography variant="heading-bold-xl" color="text.primary">
-                khem image
-              </Typography>
-            </StyledImageWrapper>
+          <Stack direction="row" mb={MAEW_TUN_INTRO_CARD_SPACING} spacing={MAEW_TUN_INTRO_CARD_SPACING}>
+            <CatImageFrame />
+            <CatImageFrame />
           </Stack>
-          {
-            // #endregion Cat Image
-          }
 
           {
             // #region Video
