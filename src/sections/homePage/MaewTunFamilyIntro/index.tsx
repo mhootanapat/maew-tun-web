@@ -1,9 +1,10 @@
 import { StyledCardBlur } from '@/common/components/CardBlur';
+import { homePageCatImageList } from '@/common/constants/homePageCatImageList';
 import useVideoPlayer from '@/common/hooks/useVideoPlayer';
 import CatImageFrame from '@/sections/homePage/MaewTunFamilyIntro/CatImageFrame';
 import LineContact from '@/sections/homePage/MaewTunFamilyIntro/LineContact';
 import SocialMedia from '@/sections/homePage/MaewTunFamilyIntro/SocialMedia/SocialMedia';
-import { Box, Stack, Typography, styled } from '@mui/material';
+import { Stack, Typography, styled } from '@mui/material';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -49,7 +50,6 @@ const StyledVideo = styled('video')(() => ({
 
 const StyledVideoWrapper = styled(StyledCardBlur)(() => ({
   padding: 0,
-  maxHeight: '800px',
 }));
 //#endregion Video Styled
 
@@ -58,59 +58,64 @@ const MaewTunFamilyIntro = () => {
   const { vdoElementRef, setFocus, onEndedLoop } = useVideoPlayer();
 
   return (
-    <Box mx={MAEW_TUN_INTRO_CARD_SPACING}>
-      <Stack
-        direction="row"
-        mt={MAEW_TUN_INTRO_CARD_SPACING - 2}
-        mb={MAEW_TUN_INTRO_CARD_SPACING}
-        flexWrap="wrap"
-        gap={MAEW_TUN_INTRO_CARD_SPACING}
-      >
-        <Stack spacing={MAEW_TUN_INTRO_CARD_SPACING} flex={1}>
-          {
-            // #region Page Name
-          }
-          <StyledPageNameWrapper>
-            <Stack alignItems="center" whiteSpace="nowrap">
-              <StyledPageNameTypography>{t('webTitle')}</StyledPageNameTypography>
-              <Typography variant="body-bold-md" color="text.primary">
-                {t('greeting')}
-              </Typography>
-            </Stack>
-          </StyledPageNameWrapper>
-          {
-            // #endregion Page Name
-          }
-          <SocialMedia />
-          <LineContact />
-        </Stack>
-
-        <Stack flex={1}>
-          <Stack direction="row" mb={MAEW_TUN_INTRO_CARD_SPACING} spacing={MAEW_TUN_INTRO_CARD_SPACING}>
-            <CatImageFrame />
-            <CatImageFrame />
+    <Stack
+      direction="row"
+      mx={MAEW_TUN_INTRO_CARD_SPACING}
+      mt={MAEW_TUN_INTRO_CARD_SPACING - 2}
+      mb={MAEW_TUN_INTRO_CARD_SPACING}
+      flexWrap="wrap"
+      gap={MAEW_TUN_INTRO_CARD_SPACING}
+    >
+      <Stack spacing={MAEW_TUN_INTRO_CARD_SPACING} flex={1}>
+        {
+          // #region Page Name
+        }
+        <StyledPageNameWrapper>
+          <Stack alignItems="center" whiteSpace="nowrap">
+            <StyledPageNameTypography>{t('webTitle')}</StyledPageNameTypography>
+            <Typography variant="body-bold-md" color="text.primary">
+              {t('greeting')}
+            </Typography>
           </Stack>
-
-          {
-            // #region Video
-          }
-          <StyledVideoWrapper>
-            <StyledVideo
-              ref={vdoElementRef}
-              onMouseOver={() => setFocus(true)}
-              onMouseOut={() => setFocus(false)}
-              src="/assets/videos/tun-khem-profile-video.mp4"
-              onEnded={onEndedLoop}
-              autoPlay
-              muted
-            />
-          </StyledVideoWrapper>
-          {
-            // #region Video
-          }
-        </Stack>
+        </StyledPageNameWrapper>
+        {
+          // #endregion Page Name
+        }
+        <SocialMedia />
+        <LineContact />
       </Stack>
-    </Box>
+
+      <Stack flex={1}>
+        <Stack direction="row" mb={MAEW_TUN_INTRO_CARD_SPACING} spacing={MAEW_TUN_INTRO_CARD_SPACING}>
+          {homePageCatImageList.map((cat) => (
+            <CatImageFrame
+              key={cat.catName}
+              catName={cat.catName}
+              catBirthDate={cat.catBirthDate}
+              catImgUrl={cat.catImgUrl}
+            />
+          ))}
+        </Stack>
+
+        {
+          // #region Video
+        }
+        <StyledVideoWrapper>
+          <StyledVideo
+            ref={vdoElementRef}
+            onMouseOver={() => setFocus(true)}
+            onMouseOut={() => setFocus(false)}
+            src="/assets/videos/tun-khem-profile-video.mp4"
+            onEnded={onEndedLoop}
+            autoPlay
+            muted
+          />
+        </StyledVideoWrapper>
+        {
+          // #endregion Video
+        }
+      </Stack>
+    </Stack>
   );
 };
 

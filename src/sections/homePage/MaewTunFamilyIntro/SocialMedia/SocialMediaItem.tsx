@@ -31,6 +31,7 @@ const StyledSocialMediaName = styled(Typography)(() => ({
 const StyledSocialMediaButton = styled(Link)(({ theme }) => ({
   color: theme.palette.text.primary,
   textDecoration: 'none',
+  marginTop: theme.spacing(8),
   ':hover': {
     filter: 'brightness(110%)',
     transform: 'translateY(-6px)',

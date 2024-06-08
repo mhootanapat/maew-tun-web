@@ -1,7 +1,7 @@
 import { StyledCardBlur } from '@/common/components/CardBlur';
 import { socialMediaList } from '@/common/constants/socialMediaList';
 import SocialMediaItem from '@/sections/homePage/MaewTunFamilyIntro/SocialMedia/SocialMediaItem';
-import { Stack, Typography, styled } from '@mui/material';
+import { Typography, styled } from '@mui/material';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -9,6 +9,9 @@ const StyledSocialMediaWrapper = styled(StyledCardBlur)(({ theme }) => ({
   background: theme.palette.colors.brown,
   height: '100%',
   overflow: 'visible',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
 }));
 
 const StyledSocialMediaTitle = styled(Typography)(({ theme }) => ({
@@ -58,19 +61,17 @@ const SocialMedia = () => {
 
   return (
     <StyledSocialMediaWrapper>
-      <Stack spacing={8}>
-        <StyledSocialMediaTitle>{t('letsGetSocial')}</StyledSocialMediaTitle>
-        {socialMediaList.map((item) => (
-          <SocialMediaItem
-            key={item.platformName}
-            iconPath={item.iconPath}
-            altValue={item.altValue}
-            platformName={item.platformName}
-            borderColor={item.borderColor}
-            profileUrl={item.profileUrl}
-          />
-        ))}
-      </Stack>
+      <StyledSocialMediaTitle>{t('letsGetSocial')}</StyledSocialMediaTitle>
+      {socialMediaList.map((item) => (
+        <SocialMediaItem
+          key={item.platformName}
+          iconPath={item.iconPath}
+          altValue={item.altValue}
+          platformName={item.platformName}
+          borderColor={item.borderColor}
+          profileUrl={item.profileUrl}
+        />
+      ))}
     </StyledSocialMediaWrapper>
   );
 };
