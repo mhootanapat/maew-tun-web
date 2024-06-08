@@ -17,16 +17,13 @@ const StyledPageNameWrapper = styled(StyledCardBlur)(() => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  background: `conic-gradient(at 78% 3%,#0000 75%,#F6E2B2 0),
-  conic-gradient(at 78% 3%,#0000 75%,#F6E2B2 0) 40px 40px,
-  conic-gradient(at 78% 3%,#0000 75%,#F6E2B2 0) calc(2*40px) calc(2*40px),
-  conic-gradient(at 78% 3%,#0000 75%,#F6E2B2 0) calc(3*40px) calc(3*40px),
-  conic-gradient(at 3% 78%,#0000 75%,#F6E2B2 0) 0 calc(3*40px),
-  conic-gradient(at 3% 78%,#0000 75%,#F6E2B2 0) 40px 0,
-  conic-gradient(at 3% 78%,#0000 75%,#F6E2B2 0) calc(2*40px) 40px,
-  conic-gradient(at 3% 78%,#0000 75%,#F6E2B2 0) calc(3*40px) calc(2*40px)
-  #FFFFFF`,
-  backgroundSize: `calc(4*40px) calc(4*40px)`,
+  background: `radial-gradient(circle at bottom ,rgba(255, 231, 122, 0.5), 
+    rgba(255, 231, 122, 0.5) 10%,transparent 10%, transparent 20%, 
+    rgba(255, 231, 122, 0.5) 20%, rgba(255, 231, 122, 0.5) 30%, transparent 30%, transparent 40%, 
+    rgba(255, 231, 122, 0.5) 40%, rgba(255, 231, 122, 0.5) 50%, transparent 50%, transparent 60%, 
+    rgba(255, 231, 122, 0.5) 60%, rgba(255, 231, 122, 0.5) 70%, transparent 70%, transparent 80%, 
+    rgba(255, 231, 122, 0.5) 80%, rgba(255, 231, 122, 0.5) 90%, transparent 90%) 0% 0% / 3em 3em #FFFFFF`,
+  backgroundSize: '40px 40px',
 }));
 
 const StyledPageNameTypography = styled(Typography)(() => ({

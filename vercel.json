@@ -1,0 +1,28 @@
+{
+    "builds": [
+      {
+        "src": "next.config.js",
+        "use": "@vercel/next"
+      }
+    ],
+    "headers": [
+      {
+        "source": "/_next/static/(.*).js",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/javascript; charset=UTF-8"
+          }
+        ]
+      },
+      {
+        "source": "/static/(.*).js",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/javascript; charset=UTF-8"
+          }
+        ]
+      }
+    ]
+  }
