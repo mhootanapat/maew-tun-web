@@ -61,8 +61,20 @@ const StyledImageWrapper = styled('div')(() => ({
 
   ':hover .cat-name': {
     marginTop: '80%',
+    boxShadow: '-1px 8px 10px -6px rgba(151, 151, 151, 1)',
     '.birthday': {
       display: 'block',
+      animation: 'scaleUpSize 1s ease 0s 1 normal none',
+      '@keyframes scaleUpSize': {
+        '0%': {
+          transform: 'scale(0.5)',
+          transformOrigin: ' 50% 0%',
+        },
+        '100%': {
+          transform: 'scale(1)',
+          transformOrigin: '50% 0%',
+        },
+      },
     },
   },
 }));
@@ -76,17 +88,15 @@ const StyledNameWrapper = styled('div')(({ theme }) => ({
   justifyContent: 'center',
   alignItems: 'center',
   transition: transitionUpside,
-  background: 'white',
   borderRadius: theme.spacing(3),
   padding: theme.spacing(1),
   width: '100%',
+  backdropFilter: 'blur(1px)',
+  backgroundImage: 'linear-gradient(45deg, rgba(255,255,255,0.8), rgba(255,255,255,0.8))',
+  boxShadow: '-1px -6px 10px -6px rgba(151, 151, 151, 1)',
 
   '.birthday': {
     display: 'none',
-  },
-
-  '.text': {
-    fontSize: '1rem',
   },
 }));
 
@@ -97,7 +107,7 @@ const CatImageFrame = ({ catName, catImgUrl, catBirthDate }: ICatImageFrame) => 
       <i className="glow" />
     </div>
     <StyledNameWrapper className="cat-name">
-      <Typography className="text">{catName}</Typography>
+      <Typography>{catName}</Typography>
       <Typography className="birthday">{catBirthDate}</Typography>
     </StyledNameWrapper>
   </StyledImageWrapper>
