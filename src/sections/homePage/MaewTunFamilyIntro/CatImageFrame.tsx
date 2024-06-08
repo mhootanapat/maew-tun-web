@@ -2,8 +2,8 @@ import { ICatImageFrame } from '@/common/types/sections/CatImageFrame';
 import { Typography, styled } from '@mui/material';
 import { memo } from 'react';
 
-const transitionDown = 'all .5s cubic-bezier(0.645, 0.045, 0.355, 1)';
-const transitionUp = 'all .5s cubic-bezier(0.645, 0.045, 0.355, 1)';
+const transitionUpside = 'all .5s cubic-bezier(0.645, 0.045, 0.355, 1)';
+const transitionDownSide = 'all 1s cubic-bezier(0.645, 0.045, 0.355, 1)';
 
 const StyledImageWrapper = styled('div')(() => ({
   position: 'relative',
@@ -19,8 +19,8 @@ const StyledImageWrapper = styled('div')(() => ({
     minWidth: '100px',
     objectFit: 'cover',
     filter: 'drop-shadow(2px 4px 6px grey)',
-    boxShadow: '10px 15px 25px 0 rgba(0,0,0,.2)',
-    transition: transitionDown,
+    boxShadow: '10px 15px 25px 0 rgba(0,0,0,.1)',
+    transition: transitionUpside,
     borderRadius: '50%',
   },
 
@@ -37,16 +37,16 @@ const StyledImageWrapper = styled('div')(() => ({
     position: 'absolute',
     width: '40%',
     height: '200%',
-    background: 'rgba(255,255,255,.1)',
+    background: 'rgba(255,255,255,.8)',
     top: 0,
     filter: 'blur(5px)',
     transform: 'rotate(45deg) translate(-450%, 0)',
-    transition: transitionDown,
+    transition: transitionUpside,
     borderRadius: '50%',
   },
 
   ':hover img': {
-    boxShadow: '1px 1px 10px 0 rgba(0,0,0,.1)',
+    boxShadow: '1px 1px 10px 0 rgba(0,0,0,1)',
     marginTop: '-10px',
 
     '.glow-wrap': {
@@ -56,11 +56,10 @@ const StyledImageWrapper = styled('div')(() => ({
 
   ':hover .glow': {
     transform: 'rotate(45deg) translate(450%, 0)',
-    transition: transitionUp,
+    transition: transitionDownSide,
   },
 
   ':hover .cat-name': {
-    transition: transitionUp,
     marginTop: '80%',
     '.birthday': {
       display: 'block',
@@ -76,7 +75,7 @@ const StyledNameWrapper = styled('div')(({ theme }) => ({
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  transition: transitionDown,
+  transition: transitionUpside,
   background: 'white',
   borderRadius: theme.spacing(3),
   padding: theme.spacing(1),
