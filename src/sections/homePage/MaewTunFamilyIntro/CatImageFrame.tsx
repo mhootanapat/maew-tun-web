@@ -1,5 +1,6 @@
+import ImageWithFallback from '@/common/components/ImageWithFallback';
 import { ICatImageFrame } from '@/common/types/sections/CatImageFrame';
-import { Typography, styled } from '@mui/material';
+import { Stack, Typography, styled } from '@mui/material';
 import { memo } from 'react';
 
 const transitionUpside = 'all .5s cubic-bezier(0.645, 0.045, 0.355, 1)';
@@ -13,7 +14,7 @@ const StyledImageWrapper = styled('div')(() => ({
   flexDirection: 'column',
   alignItems: 'center',
 
-  img: {
+  '.cat-image': {
     height: '100%',
     width: '100%',
     minWidth: '100px',
@@ -45,7 +46,7 @@ const StyledImageWrapper = styled('div')(() => ({
     borderRadius: '50%',
   },
 
-  ':hover img': {
+  ':hover .cat-image': {
     boxShadow: '1px 1px 10px 0 rgba(0,0,0,1)',
     marginTop: '-10px',
 
@@ -63,7 +64,7 @@ const StyledImageWrapper = styled('div')(() => ({
     marginTop: '80%',
     boxShadow: '-1px 8px 10px -6px rgba(151, 151, 151, 1)',
     '.birthday': {
-      display: 'block',
+      display: 'flex',
       animation: 'scaleUpSize 1s ease 0s 1 normal none',
       '@keyframes scaleUpSize': {
         '0%': {
@@ -100,15 +101,21 @@ const StyledNameWrapper = styled('div')(({ theme }) => ({
   },
 }));
 
+const iconWidth = 32;
+const iconHeight = 32;
+
 const CatImageFrame = ({ catName, catImgUrl, catBirthDate }: ICatImageFrame) => (
   <StyledImageWrapper>
-    <img src={catImgUrl} alt="cat img" />
+    <img src={catImgUrl} alt="cat img" className="cat-image" />
     <div className="glow-wrap">
       <i className="glow" />
     </div>
     <StyledNameWrapper className="cat-name">
       <Typography>{catName}</Typography>
-      <Typography className="birthday">{catBirthDate}</Typography>
+      <Stack direction="row" className="birthday" spacing={1} alignItems="center">
+        <ImageWithFallback src="/assets/icons/bday-icon.png" alt="bday icon" width={iconWidth} height={iconHeight} />
+        <Typography variant="body-sm">{catBirthDate}</Typography>
+      </Stack>
     </StyledNameWrapper>
   </StyledImageWrapper>
 );

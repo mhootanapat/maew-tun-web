@@ -1,15 +1,16 @@
 import { ICatImageFrame } from '@/common/types/sections/CatImageFrame';
-import { t } from 'i18next';
+import { toDateTimeString } from '@/utils/date';
+import i18next from 'i18next';
 
 export const homePageCatImageList: ICatImageFrame[] = [
   {
-    catName: t('kaiTunName'),
+    catName: i18next.t('kaiTunName'),
     catImgUrl: '/apple-touch-icon.png', // TODO: Update to real img
-    catBirthDate: '2022-01-18',
+    catBirthDate: toDateTimeString({ date: '2022-01-18', locale: i18next.language, options: { showTime: false } }),
   },
   {
-    catName: t('kaiKhemName'),
+    catName: i18next.t('kaiKhemName'),
     catImgUrl: '/apple-touch-icon.png', // TODO: Update to real img
-    catBirthDate: '2024-01-21',
+    catBirthDate: toDateTimeString({ date: '2024-01-21', locale: i18next.language, options: { showTime: false } }),
   },
 ];
