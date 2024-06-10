@@ -4,6 +4,7 @@ import createEmotionCache from '@/utils/createEmotionCache';
 import '@/utils/i18n';
 import { CacheProvider } from '@emotion/react';
 import { CssBaseline, ThemeProvider } from '@mui/material';
+import { Analytics } from '@vercel/analytics/react';
 import { t } from 'i18next';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
@@ -29,6 +30,7 @@ const MyApp = (props: Props) => {
           <ParallaxProvider>
             <CssBaseline />
             {getLayout(<Component {...pageProps} />)}
+            <Analytics />
           </ParallaxProvider>
         </ThemeProvider>
       </CacheProvider>
