@@ -29,7 +29,10 @@
     "react-device-detect": "^2.2.3",
     "react-dom": "18.2.0",
     "react-i18next": "^13.4.1",
-    "react-scroll-parallax": "^3.4.5"
+    "react-scroll-parallax": "^3.4.5",
+    "redux-persist": "^6.0.0",
+    "react-redux": "^8.1.1",
+    "@reduxjs/toolkit": "^1.9.5"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",

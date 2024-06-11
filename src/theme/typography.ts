@@ -224,7 +224,7 @@ const typography: TypographyOptions = {
   caption: undefined,
 
   /**
-   * IMPORTANT: Many MUI components are used from body1 and body2, e.g. inputs, checkbox labels, etc.
+   * IMPORTANT: Many MUI components are used from body1 and body2, e.g. inputs, etc.
    * NOTE: Direct use are not allowed. Please use from body-lg and body-md instead.
    */
   body1: getBodyStyle('lg', 'regular'),
