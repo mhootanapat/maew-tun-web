@@ -1,7 +1,14 @@
-import { ISocialMediaItem } from '@/common/types/sections/SocialMediaItem';
 import { t } from 'i18next';
 
-export const socialMediaList: ISocialMediaItem[] = [
+export interface ISocialMediaItemConfig {
+  platformName: string;
+  iconPath: string;
+  altValue: string;
+  borderColor: string;
+  profileUrl: string;
+}
+
+export const socialMediaList: ISocialMediaItemConfig[] = [
   {
     platformName: t('facebook'),
     altValue: 'Facebook logo',

@@ -1,4 +1,4 @@
-import { ISocialMediaItem } from '@/common/types/sections/SocialMediaItem';
+import { ISocialMediaItemConfig } from '@/common/constants/socialMediaList';
 import SocialMediaItem from '@/sections/homePage/MaewTunFamilyIntro/SocialMedia/SocialMediaItem';
 import { render } from '@testing-library/react';
 import { ImgHTMLAttributes } from 'react';
@@ -8,7 +8,9 @@ jest.mock('@/common/components/ImageWithFallback', () => (props: ImgHTMLAttribut
   return <img src={src} alt={alt} {...rest} />;
 });
 
-const mockItem: ISocialMediaItem = {
+const mockOnLoadImage = jest.fn();
+
+const mockItem: ISocialMediaItemConfig = {
   iconPath: '/path/to/icon.png',
   altValue: 'Icon Alt Text',
   platformName: 'Platform Name',
@@ -18,7 +20,9 @@ const mockItem: ISocialMediaItem = {
 
 describe('SocialMediaItem Component', () => {
   test('renders correctly with given props', () => {
-    const { getByText, getByRole, getAllByAltText } = render(<SocialMediaItem {...mockItem} />);
+    const { getByText, getByRole, getAllByAltText } = render(
+      <SocialMediaItem item={mockItem} onImageLoaded={mockOnLoadImage} />
+    );
 
     // NOTE: Check if the platform name is rendered
     const platformName = getByText(mockItem.platformName);
@@ -37,7 +41,7 @@ describe('SocialMediaItem Component', () => {
   });
 
   test('applies styles correctly', () => {
-    const { container } = render(<SocialMediaItem {...mockItem} />);
+    const { container } = render(<SocialMediaItem {...mockItem} item={mockItem} onImageLoaded={mockOnLoadImage} />);
 
     // NOTE: Check if the image has correct styles
     const img = container.querySelector('img');

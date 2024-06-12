@@ -1,8 +1,8 @@
 import { StyledCardBlur } from '@/common/components/CardBlur';
 import { socialMediaList } from '@/common/constants/socialMediaList';
 import SocialMediaItem from '@/sections/homePage/MaewTunFamilyIntro/SocialMedia/SocialMediaItem';
-import { Typography, styled } from '@mui/material';
-import { memo } from 'react';
+import { Box, Skeleton, Typography, styled } from '@mui/material';
+import { memo, useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const StyledSocialMediaWrapper = styled(StyledCardBlur)(({ theme }) => ({
@@ -58,21 +58,30 @@ const StyledSocialMediaTitle = styled(Typography)(({ theme }) => ({
 }));
 const SocialMedia = () => {
   const { t } = useTranslation();
+  const [loadingList, setLoadingList] = useState<boolean[]>(new Array(socialMediaList.length).fill(true));
+  const loading = useMemo(() => loadingList.some((item) => item), [loadingList]);
+  const visibility = useMemo(() => (!loading ? 'visible' : 'hidden'), [loading]);
+
+  const handleImageLoaded = useCallback((index: number) => {
+    setLoadingList((prevLoadingList) => {
+      const newLoadingList = [...prevLoadingList];
+      newLoadingList[index] = false;
+      return newLoadingList;
+    });
+  }, []);
 
   return (
-    <StyledSocialMediaWrapper>
-      <StyledSocialMediaTitle>{t('letsGetSocial')}</StyledSocialMediaTitle>
-      {socialMediaList.map((item) => (
-        <SocialMediaItem
-          key={item.platformName}
-          iconPath={item.iconPath}
-          altValue={item.altValue}
-          platformName={item.platformName}
-          borderColor={item.borderColor}
-          profileUrl={item.profileUrl}
-        />
-      ))}
-    </StyledSocialMediaWrapper>
+    <Box position="relative">
+      <Box position="absolute" width="100%" height="100%">
+        {loading && <Skeleton variant="rounded" width="100%" height="100%" sx={{ borderRadius: 3 }} />}
+      </Box>
+      <StyledSocialMediaWrapper sx={{ visibility }}>
+        <StyledSocialMediaTitle>{t('letsGetSocial')}</StyledSocialMediaTitle>
+        {socialMediaList.map((item, index) => (
+          <SocialMediaItem key={item.platformName} item={item} onImageLoaded={() => handleImageLoaded(index)} />
+        ))}
+      </StyledSocialMediaWrapper>
+    </Box>
   );
 };
 
