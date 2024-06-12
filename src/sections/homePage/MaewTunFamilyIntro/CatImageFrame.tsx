@@ -115,7 +115,14 @@ const CatImageFrame = ({ item, pageLoading }: ICatImageFrame) => {
   return (
     <>
       {loading && (
-        <Box position="absolute" display="inline-block" width="100%" height="100%" {...skeletonBoxProps}>
+        <Box
+          position="absolute"
+          display="inline-block"
+          width="100%"
+          height="100%"
+          {...skeletonBoxProps}
+          data-testid="cat-frame-skeleton"
+        >
           <Skeleton variant="rounded" width="100%" height="100%" sx={{ borderRadius: 3 }} />
         </Box>
       )}
