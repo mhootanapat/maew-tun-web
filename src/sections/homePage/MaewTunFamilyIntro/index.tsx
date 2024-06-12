@@ -1,8 +1,8 @@
 import { StyledCardBlur } from '@/common/components/CardBlur';
 import { homePageCatImageList } from '@/common/constants/homePageCatImageList';
 import { MAEW_TUN_INTRO_CARD_SPACING } from '@/common/constants/screen';
-import useVideoPlayer from '@/common/hooks/useVideoPlayer';
 import CatImageFrame from '@/sections/homePage/MaewTunFamilyIntro/CatImageFrame';
+import CatVideo from '@/sections/homePage/MaewTunFamilyIntro/CatVideo';
 import LineContact from '@/sections/homePage/MaewTunFamilyIntro/LineContact';
 import SocialMedia from '@/sections/homePage/MaewTunFamilyIntro/SocialMedia/SocialMedia';
 import { Stack, Typography, styled } from '@mui/material';
@@ -37,21 +37,8 @@ const StyledPageNameTypography = styled(Typography)(() => ({
 }));
 //#endregion  Page Name Styled
 
-//#region Video Styled
-const StyledVideo = styled('video')(() => ({
-  objectFit: 'cover',
-  width: '100%',
-  height: '100%',
-}));
-
-const StyledVideoWrapper = styled(StyledCardBlur)(() => ({
-  padding: 0,
-}));
-//#endregion Video Styled
-
 const MaewTunFamilyIntro = () => {
   const { t } = useTranslation();
-  const { vdoElementRef, setFocus, onEndedLoop } = useVideoPlayer();
 
   return (
     <Stack
@@ -99,23 +86,7 @@ const MaewTunFamilyIntro = () => {
           ))}
         </Stack>
 
-        {
-          // #region Video
-        }
-        <StyledVideoWrapper>
-          <StyledVideo
-            ref={vdoElementRef}
-            onMouseOver={() => setFocus(true)}
-            onMouseOut={() => setFocus(false)}
-            src="/assets/videos/tun-khem-profile-video.mp4"
-            onEnded={onEndedLoop}
-            autoPlay
-            muted
-          />
-        </StyledVideoWrapper>
-        {
-          // #endregion Video
-        }
+        <CatVideo />
       </Stack>
     </Stack>
   );

@@ -71,10 +71,12 @@ const SocialMedia = () => {
   }, []);
 
   return (
-    <Box position="relative">
-      <Box position="absolute" width="100%" height="100%">
-        {loading && <Skeleton variant="rounded" width="100%" height="100%" sx={{ borderRadius: 3 }} />}
-      </Box>
+    <Box position="relative" width="100%" height="100%">
+      {loading && (
+        <Box position="absolute" width="100%" height="100%">
+          <Skeleton variant="rounded" width="100%" height="100%" sx={{ borderRadius: 3 }} />
+        </Box>
+      )}
       <StyledSocialMediaWrapper sx={{ visibility }}>
         <StyledSocialMediaTitle>{t('letsGetSocial')}</StyledSocialMediaTitle>
         {socialMediaList.map((item, index) => (
