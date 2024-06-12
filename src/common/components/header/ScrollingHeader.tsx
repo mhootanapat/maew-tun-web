@@ -11,11 +11,7 @@ const StyledHeader = styled(Box)(({ theme }) => ({
   width: '100%',
   position: 'fixed',
   top: 0,
-  left: '50%',
-  transform: 'translate(-50%, 0%)',
-  transitionProperty: 'all',
-  transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
-  transitionDuration: '600ms',
+
   borderRadius: `0 0 ${theme.spacing(3)} ${theme.spacing(3)}`,
 
   '&.triggered': {
@@ -24,12 +20,14 @@ const StyledHeader = styled(Box)(({ theme }) => ({
     boxShadow: theme.shadows[10],
     paddingBottom: theme.spacing(1.5),
     zIndex: 99999,
+    opacity: 1,
+    transition: 'transform 0.5s ease, opacity 0.5s ease;',
   },
 
   '&.hide': {
-    transform: 'translate(-50%, -100%)',
     boxShadow: 'none',
-    transitionDuration: '600ms',
+    transition: 'transform 0.5s ease, opacity 0.5s ease;',
+    opacity: 0,
   },
 }));
 
@@ -39,7 +37,7 @@ const HeaderWrapper = styled(Box)(() => ({
 }));
 
 const ScrollingHeader = ({ title = '', children }: IScrollingHeader) => {
-  const { isTriggered, scrollClassName } = useScrollDirection();
+  const { isTriggered, scrollClassName } = useScrollDirection({ triggerPosition: 80 });
 
   return (
     <StyledHeader className={scrollClassName} data-testid="scrolling-header">
