@@ -56,25 +56,25 @@ describe('ScrollingHeader', () => {
     expect(header).toHaveClass('triggered');
   });
 
-  it('does not render title or children when not triggered', () => {
+  it('changes to display: block when isTriggered is true', () => {
     mockedUseScrollDirection.mockReturnValue({
-      isTriggered: false,
-      scrollClassName: '',
+      isTriggered: true,
+      scrollClassName: 'triggered',
       scrollDirection: null,
     });
 
-    const { queryByText, getByTestId } = render(
-      <ThemeProvider theme={theme}>
-        <ScrollingHeader title={title}>
-          <div>Child Content</div>
-        </ScrollingHeader>
-      </ThemeProvider>
-    );
+    const { getByTestId } = render(<ScrollingHeader title={title} />);
+    expect(getByTestId('scrolling-header-container')).toHaveStyle('display: block');
+  });
 
-    expect(queryByText('Test Title')).not.toBeInTheDocument();
-    expect(queryByText('Child Content')).not.toBeInTheDocument();
-    const header = getByTestId('scrolling-header');
-    expect(header).not.toHaveClass('triggered');
+  it('changes to display: none when isTriggered is false', () => {
+    mockedUseScrollDirection.mockReturnValue({
+      isTriggered: false,
+      scrollClassName: 'hide',
+      scrollDirection: null,
+    });
+    const { getByTestId } = render(<ScrollingHeader title={title} />);
+    expect(getByTestId('scrolling-header-container')).toHaveStyle('display: none');
   });
 
   it('hides the header when scrollClassName is "hide"', () => {

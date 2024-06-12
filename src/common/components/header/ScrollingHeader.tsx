@@ -42,7 +42,7 @@ const ScrollingHeader = ({ title = '', children }: IScrollingHeader) => {
 
   return (
     <StyledHeader className={scrollClassName} data-testid="scrolling-header">
-      <Container sx={{ display }}>
+      <Container sx={{ display }} data-testid="scrolling-header-container">
         <HeaderWrapper>
           <Box
             px={8}
