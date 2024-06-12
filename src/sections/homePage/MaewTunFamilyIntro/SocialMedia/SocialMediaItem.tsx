@@ -44,24 +44,40 @@ const StyledSocialMediaButton = styled(Link)(({ theme }) => ({
   },
 }));
 
-const SocialMediaItem = ({ iconPath, altValue, platformName, borderColor, profileUrl }: ISocialMediaItem) => (
-  <StyledSocialMediaButton href={profileUrl} target="_blank" rel="noopener noreferrer" data-testid="social-media-item">
-    <Box width="100%" height="100%" display="flex" justifyContent="center" alignItems="center">
-      <Stack direction="row" position="absolute" mt={-12.5}>
-        <ImageWithFallback
-          src="/apple-touch-icon.png"
-          alt="Maew Tun Logo"
-          width={imageWidth}
-          height={imageHeight}
-          style={imageStyle}
-        />
-        <ImageWithFallback src={iconPath} alt={altValue} width={imageWidth} height={imageHeight} style={imageStyle} />
-      </Stack>
-      <StyledCircleFrame border={`8px ridge ${borderColor}`} data-testid="social-media-item-frame">
-        <StyledSocialMediaName mt={3}>{platformName}</StyledSocialMediaName>
-      </StyledCircleFrame>
-    </Box>
-  </StyledSocialMediaButton>
-);
+const SocialMediaItem = ({ item, onImageLoaded }: ISocialMediaItem) => {
+  const { iconPath, altValue, platformName, borderColor, profileUrl } = item;
+
+  return (
+    <StyledSocialMediaButton
+      href={profileUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      data-testid="social-media-item"
+    >
+      <Box width="100%" height="100%" display="flex" justifyContent="center" alignItems="center">
+        <Stack direction="row" position="absolute" mt={-12.5}>
+          <ImageWithFallback
+            src="/apple-touch-icon.png"
+            alt="Maew Tun Logo"
+            width={imageWidth}
+            height={imageHeight}
+            style={imageStyle}
+          />
+          <ImageWithFallback
+            src={iconPath}
+            alt={altValue}
+            width={imageWidth}
+            height={imageHeight}
+            style={imageStyle}
+            onLoad={onImageLoaded}
+          />
+        </Stack>
+        <StyledCircleFrame border={`8px ridge ${borderColor}`} data-testid="social-media-item-frame">
+          <StyledSocialMediaName mt={3}>{platformName}</StyledSocialMediaName>
+        </StyledCircleFrame>
+      </Box>
+    </StyledSocialMediaButton>
+  );
+};
 
 export default memo(SocialMediaItem);

@@ -1,5 +1,6 @@
+import { ICatImageFrameConfig } from '@/common/constants/homePageCatImageList';
+
 export interface ICatImageFrame {
-  catName: string;
-  catImgUrl: string;
-  catBirthDate: string;
+  item: ICatImageFrameConfig;
+  pageLoading: boolean;
 }

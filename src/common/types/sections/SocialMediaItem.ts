@@ -1,7 +1,6 @@
+import { ISocialMediaItemConfig } from '@/common/constants/socialMediaList';
+
 export interface ISocialMediaItem {
-  platformName: string;
-  iconPath: string;
-  altValue: string;
-  borderColor: string;
-  profileUrl: string;
+  item: ISocialMediaItemConfig;
+  onImageLoaded: () => void;
 }

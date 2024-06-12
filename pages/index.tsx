@@ -1,17 +1,13 @@
-import NavigationHeader from '@/common/components/header/NavigationHeader';
-import ScrollingHeader from '@/common/components/header/ScrollingHeader';
+import useFontLoad from '@/common/hooks/useFontLoad';
 import MainLayout from '@/layout/main';
 import MaewTunFamilyIntro from '@/sections/homePage/MaewTunFamilyIntro';
 import { ReactNode } from 'react';
 
-const Home = () => (
-  <>
-    <ScrollingHeader>
-      <NavigationHeader />
-    </ScrollingHeader>
-    <MaewTunFamilyIntro />
-  </>
-);
+const Home = () => {
+  const { fontsLoaded } = useFontLoad();
+
+  return <MaewTunFamilyIntro loading={!fontsLoaded} />;
+};
 
 Home.getLayout = function getLayout(page: ReactNode) {
   return <MainLayout>{page}</MainLayout>;

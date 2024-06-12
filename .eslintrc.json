@@ -113,7 +113,6 @@
             "checksVoidReturn": false
           }
         ],
-        // Disabled for none blocking process e.g. fetch data without waiting
         "@typescript-eslint/no-floating-promises": "off",
         "@typescript-eslint/no-unsafe-argument": "off",
         "@typescript-eslint/no-unsafe-assignment": "off",

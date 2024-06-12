@@ -11,7 +11,7 @@ export default function useScrollDirection(props: IScrollDirectionHook = {}) {
   const [isBottomOfPage, setIsBottomOfPage] = useState<boolean>(false);
 
   const scrollClassName = [
-    scrollDirection === SCROLL_DIRECTION.DOWN && isTriggered ? 'hide' : '',
+    scrollDirection === SCROLL_DIRECTION.DOWN ? 'hide' : '',
     isTriggered ? 'triggered' : '',
     isBottomOfPage ? 'bottom-position' : '',
   ]

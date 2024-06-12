@@ -9,7 +9,7 @@ describe('LineContact Component', () => {
   test('renders correctly with the Line QR code and text', () => {
     const { getByText, getByAltText } = render(
       <ThemeProvider theme={theme}>
-        <LineContact />
+        <LineContact pageLoading={false} />
       </ThemeProvider>
     );
 
@@ -33,7 +33,7 @@ describe('LineContact Component', () => {
   test('opens new tab when clicking on the Line container', () => {
     const { getByText } = render(
       <ThemeProvider theme={theme}>
-        <LineContact />
+        <LineContact pageLoading={false} />
       </ThemeProvider>
     );
 
@@ -61,7 +61,7 @@ describe('LineContact Component', () => {
   test('handles missing Line QR code image gracefully', () => {
     const { getByAltText, getByText } = render(
       <ThemeProvider theme={theme}>
-        <LineContact />
+        <LineContact pageLoading={false} />
       </ThemeProvider>
     );
 

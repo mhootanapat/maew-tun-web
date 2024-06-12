@@ -1,7 +1,7 @@
 import ImageWithFallback from '@/common/components/ImageWithFallback';
 import { ICatImageFrame } from '@/common/types/sections/CatImageFrame';
-import { Stack, Typography, styled } from '@mui/material';
-import { memo } from 'react';
+import { Box, Skeleton, Stack, Typography, styled } from '@mui/material';
+import { memo, useCallback, useMemo, useState } from 'react';
 
 const transitionUpside = 'all .5s cubic-bezier(0.645, 0.045, 0.355, 1)';
 const transitionDownSide = 'all 1s cubic-bezier(0.645, 0.045, 0.355, 1)';
@@ -104,20 +104,48 @@ const StyledNameWrapper = styled('div')(({ theme }) => ({
 const iconWidth = 32;
 const iconHeight = 32;
 
-const CatImageFrame = ({ catName, catImgUrl, catBirthDate }: ICatImageFrame) => (
-  <StyledImageWrapper>
-    <img src={catImgUrl} alt="cat img" className="cat-image" />
-    <div className="glow-wrap">
-      <i className="glow" />
-    </div>
-    <StyledNameWrapper className="cat-name">
-      <Typography>{catName}</Typography>
-      <Stack direction="row" className="birthday" spacing={1} alignItems="center">
-        <ImageWithFallback src="/assets/icons/bday-icon.png" alt="bday icon" width={iconWidth} height={iconHeight} />
-        <Typography variant="body-sm">{catBirthDate}</Typography>
-      </Stack>
-    </StyledNameWrapper>
-  </StyledImageWrapper>
-);
+const CatImageFrame = ({ item, pageLoading }: ICatImageFrame) => {
+  const { catName, catImgUrl, catBirthDate, skeletonBoxProps } = item;
+  const [imgLoading, setImgLoading] = useState(true);
+  const loading = useMemo(() => imgLoading || pageLoading, [imgLoading, pageLoading]);
+  const visibility = useMemo(() => (!loading ? 'visible' : 'hidden'), [loading]);
+
+  const handleOnLoadImage = useCallback(() => setImgLoading(false), []);
+
+  return (
+    <>
+      {loading && (
+        <Box
+          position="absolute"
+          display="inline-block"
+          width="100%"
+          height="100%"
+          {...skeletonBoxProps}
+          data-testid="cat-frame-skeleton"
+        >
+          <Skeleton variant="rounded" width="100%" height="100%" sx={{ borderRadius: 3 }} />
+        </Box>
+      )}
+      <StyledImageWrapper sx={{ visibility }}>
+        <img src={catImgUrl} alt="cat img" className="cat-image" onLoad={handleOnLoadImage} />
+        <div className="glow-wrap">
+          <i className="glow" />
+        </div>
+        <StyledNameWrapper className="cat-name">
+          <Typography>{catName}</Typography>
+          <Stack direction="row" className="birthday" spacing={1} alignItems="center">
+            <ImageWithFallback
+              src="/assets/icons/bday-icon.png"
+              alt="bday icon"
+              width={iconWidth}
+              height={iconHeight}
+            />
+            <Typography variant="body-sm">{catBirthDate}</Typography>
+          </Stack>
+        </StyledNameWrapper>
+      </StyledImageWrapper>
+    </>
+  );
+};
 
 export default memo(CatImageFrame);

@@ -9,7 +9,7 @@ describe('SocialMedia Component', () => {
   test('renders correctly with social media items', () => {
     const { getByText, getAllByTestId } = render(
       <ThemeProvider theme={theme}>
-        <SocialMedia />
+        <SocialMedia pageLoading={false} />
       </ThemeProvider>
     );
 
@@ -45,7 +45,7 @@ describe('SocialMedia Component', () => {
   test('renders correctly with styled wrapper', () => {
     const { container } = render(
       <ThemeProvider theme={theme}>
-        <SocialMedia />
+        <SocialMedia pageLoading={false} />
       </ThemeProvider>
     );
 
