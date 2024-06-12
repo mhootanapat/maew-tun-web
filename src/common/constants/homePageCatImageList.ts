@@ -1,9 +1,15 @@
 import { MAEW_TUN_INTRO_CARD_SPACING } from '@/common/constants/screen';
-import { ICatImageFrame } from '@/common/types/sections/CatImageFrame';
 import { toDateTimeString } from '@/utils/date';
+import { BoxProps } from '@mui/material';
 import i18next from 'i18next';
 
-export const homePageCatImageList: ICatImageFrame[] = [
+export interface ICatImageFrameConfig {
+  catName: string;
+  catImgUrl: string;
+  catBirthDate: string;
+  skeletonBoxProps?: BoxProps;
+}
+export const homePageCatImageList: ICatImageFrameConfig[] = [
   {
     catName: i18next.t('kaiTunName'),
     catImgUrl: '/assets/images/kaitun.jpg',

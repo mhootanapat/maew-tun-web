@@ -1,8 +1,9 @@
 import ImageWithFallback from '@/common/components/ImageWithFallback';
 import { MAEW_TUN_INTRO_CARD_SPACING } from '@/common/constants/screen';
 import { lineAddFriendUrl } from '@/common/constants/socialMediaList';
-import { Box, Typography, styled } from '@mui/material';
-import { memo, useCallback } from 'react';
+import { ILineContact } from '@/common/types/sections/LineContact';
+import { Box, Skeleton, Typography, styled } from '@mui/material';
+import { memo, useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const MAEW_TUN_INTRO_LINE_CONTACT_CARD_HEIGHT = 100;
@@ -112,30 +113,53 @@ const StyledLineQRImage = styled(ImageWithFallback)(({ theme }) => ({
   },
 }));
 
-const LineContact = () => {
+const LineContact = ({ pageLoading }: ILineContact) => {
   const { t } = useTranslation();
+  const [qrLoading, setLoading] = useState<boolean>(true);
+  const loading = useMemo(() => pageLoading || qrLoading, [pageLoading, qrLoading]);
+  const visibility = useMemo(() => (!loading ? 'visible' : 'hidden'), [loading]);
+
   const handleLineContainerClick = useCallback(() => {
     window.open(lineAddFriendUrl, '_blank', 'noopener,noreferrer');
   }, []);
 
+  const handleQRImageLoad = useCallback(() => {
+    setLoading(false);
+  }, []);
+
   return (
-    <StyledLineContactWrapper>
-      <StyledLineQRImage src="/assets/images/friend-siriyakorn-line-qr.jpg" alt="Line QR" width={10} height={10} />
-      <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        mx={2}
-        width="100%"
-        position="relative"
-        onClick={handleLineContainerClick}
-      >
-        <Ribbon>
-          <span>{t('forWorkOnly')}</span>
-        </Ribbon>
-        <StyledLineText>{t('line')}</StyledLineText>
-      </Box>
-    </StyledLineContactWrapper>
+    <>
+      {loading && (
+        <Box position="relative" width="100%" height="100%">
+          <Box position="absolute" width="100%" height={120}>
+            <Skeleton variant="rounded" width="100%" height="100%" sx={{ borderRadius: 3 }} />
+          </Box>
+        </Box>
+      )}
+      <StyledLineContactWrapper sx={{ visibility }}>
+        <StyledLineQRImage
+          src="/assets/images/friend-siriyakorn-line-qr.jpg"
+          alt="Line QR"
+          width={10}
+          height={10}
+          onLoad={handleQRImageLoad}
+        />
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          mx={2}
+          width="100%"
+          position="relative"
+          onClick={handleLineContainerClick}
+        >
+          <Ribbon>
+            <span>{t('forWorkOnly')}</span>
+          </Ribbon>
+          <StyledLineText>{t('line')}</StyledLineText>
+        </Box>
+      </StyledLineContactWrapper>
+    </>
   );
 };
 

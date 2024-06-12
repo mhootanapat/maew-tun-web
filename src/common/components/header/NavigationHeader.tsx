@@ -32,7 +32,7 @@ const NavigationHeader = () => {
           height={80}
         >
           <Skeleton variant="rounded" width={200} height={50} sx={{ ml: 2, borderRadius: 3 }} />
-          <Skeleton variant="rounded" width={300} height={50} sx={{ mr: 2, borderRadius: 3 }} />
+          <Skeleton variant="rounded" width={300} height={50} sx={{ mr: 6, borderRadius: 3 }} />
         </Stack>
       )}
       <Stack

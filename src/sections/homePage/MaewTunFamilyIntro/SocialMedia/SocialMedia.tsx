@@ -1,5 +1,6 @@
 import { StyledCardBlur } from '@/common/components/CardBlur';
 import { socialMediaList } from '@/common/constants/socialMediaList';
+import { ISocialMedia } from '@/common/types/sections/SocialMedia';
 import SocialMediaItem from '@/sections/homePage/MaewTunFamilyIntro/SocialMedia/SocialMediaItem';
 import { Box, Skeleton, Typography, styled } from '@mui/material';
 import { memo, useCallback, useMemo, useState } from 'react';
@@ -56,10 +57,10 @@ const StyledSocialMediaTitle = styled(Typography)(({ theme }) => ({
     fontSize: '16px',
   },
 }));
-const SocialMedia = () => {
+const SocialMedia = ({ pageLoading }: ISocialMedia) => {
   const { t } = useTranslation();
   const [loadingList, setLoadingList] = useState<boolean[]>(new Array(socialMediaList.length).fill(true));
-  const loading = useMemo(() => loadingList.some((item) => item), [loadingList]);
+  const loading = useMemo(() => pageLoading || loadingList.some((item) => item), [loadingList, pageLoading]);
   const visibility = useMemo(() => (!loading ? 'visible' : 'hidden'), [loading]);
 
   const handleImageLoaded = useCallback((index: number) => {

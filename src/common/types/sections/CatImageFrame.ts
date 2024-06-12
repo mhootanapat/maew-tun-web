@@ -1,8 +1,6 @@
-import { BoxProps } from '@mui/material';
+import { ICatImageFrameConfig } from '@/common/constants/homePageCatImageList';
 
 export interface ICatImageFrame {
-  catName: string;
-  catImgUrl: string;
-  catBirthDate: string;
-  skeletonBoxProps?: BoxProps;
+  item: ICatImageFrameConfig;
+  pageLoading: boolean;
 }

@@ -104,10 +104,13 @@ const StyledNameWrapper = styled('div')(({ theme }) => ({
 const iconWidth = 32;
 const iconHeight = 32;
 
-const CatImageFrame = ({ catName, catImgUrl, catBirthDate, skeletonBoxProps }: ICatImageFrame) => {
-  const [loading, setLoading] = useState(true);
+const CatImageFrame = ({ item, pageLoading }: ICatImageFrame) => {
+  const { catName, catImgUrl, catBirthDate, skeletonBoxProps } = item;
+  const [imgLoading, setImgLoading] = useState(true);
+  const loading = useMemo(() => imgLoading || pageLoading, [imgLoading, pageLoading]);
   const visibility = useMemo(() => (!loading ? 'visible' : 'hidden'), [loading]);
-  const handleOnLoadImage = useCallback(() => setLoading(false), []);
+
+  const handleOnLoadImage = useCallback(() => setImgLoading(false), []);
 
   return (
     <>
