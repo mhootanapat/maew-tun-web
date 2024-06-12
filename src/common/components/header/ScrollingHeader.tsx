@@ -2,7 +2,7 @@ import useScrollDirection from '@/common/hooks/useScrollDirection';
 import { IScrollingHeader } from '@/common/types/common/components/header/ScrollingHeader';
 import { getSafeAreaPageTop } from '@/utils/safeAreaStyle';
 import { Box, Container, Typography, styled } from '@mui/material';
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
 
 const StyledHeader = styled(Box)(({ theme }) => ({
   paddingTop: getSafeAreaPageTop(theme.spacing(1)),
@@ -37,38 +37,37 @@ const HeaderWrapper = styled(Box)(() => ({
 }));
 
 const ScrollingHeader = ({ title = '', children }: IScrollingHeader) => {
-  const { isTriggered, scrollClassName } = useScrollDirection({ triggerPosition: 80 });
+  const { isTriggered, scrollClassName } = useScrollDirection({ triggerPosition: 50 });
+  const display = useMemo(() => (isTriggered ? 'block' : 'none'), [isTriggered]); // NOTE: To avoid reload asset on header when remove component
 
   return (
     <StyledHeader className={scrollClassName} data-testid="scrolling-header">
-      <Container>
+      <Container sx={{ display }}>
         <HeaderWrapper>
-          {isTriggered && (
-            <Box
-              px={8}
+          <Box
+            px={8}
+            sx={{
+              position: 'absolute',
+              left: 0,
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          >
+            <Typography
+              variant="body-md"
               sx={{
-                position: 'absolute',
-                left: 0,
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'center',
+                color: (theme) => theme.palette.text.primary,
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
               }}
             >
-              <Typography
-                variant="body-md"
-                sx={{
-                  color: (theme) => theme.palette.text.primary,
-                  textOverflow: 'ellipsis',
-                  whiteSpace: 'nowrap',
-                  overflow: 'hidden',
-                }}
-              >
-                {title}
-              </Typography>
-            </Box>
-          )}
+              {title}
+            </Typography>
+          </Box>
         </HeaderWrapper>
-        {isTriggered && children}
+        {children}
       </Container>
     </StyledHeader>
   );

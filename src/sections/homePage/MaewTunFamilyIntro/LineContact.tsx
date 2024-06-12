@@ -1,6 +1,6 @@
 import ImageWithFallback from '@/common/components/ImageWithFallback';
+import { MAEW_TUN_INTRO_CARD_SPACING } from '@/common/constants/screen';
 import { lineAddFriendUrl } from '@/common/constants/socialMediaList';
-import { MAEW_TUN_INTRO_CARD_SPACING } from '@/sections/homePage/MaewTunFamilyIntro';
 import { Box, Typography, styled } from '@mui/material';
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';

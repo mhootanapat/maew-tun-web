@@ -1,5 +1,6 @@
 import { StyledCardBlur } from '@/common/components/CardBlur';
 import { homePageCatImageList } from '@/common/constants/homePageCatImageList';
+import { MAEW_TUN_INTRO_CARD_SPACING } from '@/common/constants/screen';
 import useVideoPlayer from '@/common/hooks/useVideoPlayer';
 import CatImageFrame from '@/sections/homePage/MaewTunFamilyIntro/CatImageFrame';
 import LineContact from '@/sections/homePage/MaewTunFamilyIntro/LineContact';
@@ -7,8 +8,6 @@ import SocialMedia from '@/sections/homePage/MaewTunFamilyIntro/SocialMedia/Soci
 import { Stack, Typography, styled } from '@mui/material';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
-
-export const MAEW_TUN_INTRO_CARD_SPACING = 3;
 
 //#region Page Name Styled
 const StyledPageNameWrapper = styled(StyledCardBlur)(() => ({
@@ -83,13 +82,19 @@ const MaewTunFamilyIntro = () => {
       </Stack>
 
       <Stack flex={1}>
-        <Stack direction="row" mb={MAEW_TUN_INTRO_CARD_SPACING} spacing={MAEW_TUN_INTRO_CARD_SPACING}>
+        <Stack
+          position="relative"
+          direction="row"
+          mb={MAEW_TUN_INTRO_CARD_SPACING}
+          spacing={MAEW_TUN_INTRO_CARD_SPACING}
+        >
           {homePageCatImageList.map((cat) => (
             <CatImageFrame
               key={cat.catName}
               catName={cat.catName}
               catBirthDate={cat.catBirthDate}
               catImgUrl={cat.catImgUrl}
+              skeletonBoxProps={{ ...cat.skeletonBoxProps }}
             />
           ))}
         </Stack>

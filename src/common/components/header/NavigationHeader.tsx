@@ -12,7 +12,6 @@ const NavigationHeader = () => {
   const [textLogoLoading, setTextLogoLoading] = useState(true);
   const loading = useMemo(() => logoLoading || textLogoLoading, [logoLoading, textLogoLoading]);
   const visibility = useMemo(() => (!loading ? 'visible' : 'hidden'), [loading]);
-  const skeletonDisplay = useMemo(() => (!loading ? 'none' : 'flex'), [loading]);
 
   const handleLoadedLogo = useCallback(() => {
     setLogoLoading(false);
@@ -23,18 +22,19 @@ const NavigationHeader = () => {
 
   return (
     <>
-      <Stack
-        direction="row"
-        alignItems="center"
-        justifyContent="space-between"
-        position="absolute"
-        width="100%"
-        height={80}
-        display={skeletonDisplay}
-      >
-        <Skeleton variant="rounded" width={200} height={50} sx={{ ml: 2 }} />
-        <Skeleton variant="rounded" width={300} height={50} sx={{ mr: 2 }} />
-      </Stack>
+      {loading && (
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent="space-between"
+          position="absolute"
+          width="100%"
+          height={80}
+        >
+          <Skeleton variant="rounded" width={200} height={50} sx={{ ml: 2, borderRadius: 3 }} />
+          <Skeleton variant="rounded" width={300} height={50} sx={{ mr: 2, borderRadius: 3 }} />
+        </Stack>
+      )}
       <Stack
         direction="row"
         alignItems="center"
