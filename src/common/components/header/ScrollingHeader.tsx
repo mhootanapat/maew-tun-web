@@ -1,11 +1,11 @@
+import SCROLL_DIRECTION from '@/common/enums/scrollDirection';
 import useScrollDirection from '@/common/hooks/useScrollDirection';
 import { IScrollingHeader } from '@/common/types/common/components/header/ScrollingHeader';
-import { getSafeAreaPageTop } from '@/utils/safeAreaStyle';
 import { Box, Container, Typography, styled } from '@mui/material';
 import { memo, useMemo } from 'react';
 
 const StyledHeader = styled(Box)(({ theme }) => ({
-  paddingTop: getSafeAreaPageTop(theme.spacing(1)),
+  paddingTop: theme.spacing(1),
   paddingBottom: theme.spacing(1),
   minHeight: 48,
   width: '100%',
@@ -28,6 +28,7 @@ const StyledHeader = styled(Box)(({ theme }) => ({
     boxShadow: 'none',
     transition: 'transform 0.5s ease, opacity 0.5s ease;',
     opacity: 0,
+    zIndex: -1,
   },
 }));
 
@@ -37,12 +38,15 @@ const HeaderWrapper = styled(Box)(() => ({
 }));
 
 const ScrollingHeader = ({ title = '', children }: IScrollingHeader) => {
-  const { isTriggered, scrollClassName } = useScrollDirection({ triggerPosition: 50 });
-  const display = useMemo(() => (isTriggered ? 'block' : 'none'), [isTriggered]); // NOTE: To avoid reload asset on header when remove component
+  const { isTriggered, scrollClassName, scrollDirection } = useScrollDirection({ triggerPosition: 50 });
+  const opacity = useMemo(
+    () => (isTriggered && scrollDirection !== SCROLL_DIRECTION.DOWN ? 1 : 0),
+    [isTriggered, scrollDirection]
+  ); // NOTE: To avoid reload asset on header when remove component
 
   return (
-    <StyledHeader className={scrollClassName} data-testid="scrolling-header">
-      <Container sx={{ display }} data-testid="scrolling-header-container">
+    <StyledHeader className={scrollClassName} sx={{ opacity }} data-testid="scrolling-header">
+      <Container data-testid="scrolling-header-container">
         <HeaderWrapper>
           <Box
             px={8}
