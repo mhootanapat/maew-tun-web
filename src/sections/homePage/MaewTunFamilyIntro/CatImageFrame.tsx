@@ -143,7 +143,7 @@ const CatImageFrame = ({ item, pageLoading }: ICatImageFrame) => {
               width={iconWidth}
               height={iconHeight}
             />
-            <Typography variant="body-sm">
+            <Typography variant="body-sm" data-testid="cat-birthday">
               {toDateTimeString({ date: catBirthDate, locale: i18n.language, options: { showTime: false } })}
             </Typography>
           </Stack>

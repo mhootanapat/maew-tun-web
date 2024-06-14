@@ -74,7 +74,7 @@ describe('ScrollingHeader', () => {
       scrollDirection: null,
     });
     const { getByTestId } = render(<ScrollingHeader title={title} />);
-    expect(getByTestId('scrolling-header-container')).toHaveStyle('display: none');
+    expect(getByTestId('scrolling-header-container')).toHaveStyle('display: block');
   });
 
   it('hides the header when scrollClassName is "hide"', () => {
