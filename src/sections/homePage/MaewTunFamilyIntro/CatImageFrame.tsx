@@ -1,7 +1,9 @@
 import ImageWithFallback from '@/common/components/ImageWithFallback';
 import { ICatImageFrame } from '@/common/types/sections/CatImageFrame';
+import { toDateTimeString } from '@/utils/date';
 import { Box, Skeleton, Stack, Typography, styled } from '@mui/material';
 import { memo, useCallback, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const transitionUpside = 'all .5s cubic-bezier(0.645, 0.045, 0.355, 1)';
 const transitionDownSide = 'all 1s cubic-bezier(0.645, 0.045, 0.355, 1)';
@@ -105,6 +107,7 @@ const iconWidth = 32;
 const iconHeight = 32;
 
 const CatImageFrame = ({ item, pageLoading }: ICatImageFrame) => {
+  const { t, i18n } = useTranslation();
   const { catName, catImgUrl, catBirthDate, skeletonBoxProps } = item;
   const [imgLoading, setImgLoading] = useState(true);
   const loading = useMemo(() => imgLoading || pageLoading, [imgLoading, pageLoading]);
@@ -132,7 +135,7 @@ const CatImageFrame = ({ item, pageLoading }: ICatImageFrame) => {
           <i className="glow" />
         </div>
         <StyledNameWrapper className="cat-name">
-          <Typography>{catName}</Typography>
+          <Typography>{t(catName)}</Typography>
           <Stack direction="row" className="birthday" spacing={1} alignItems="center">
             <ImageWithFallback
               src="/assets/icons/bday-icon.png"
@@ -140,7 +143,9 @@ const CatImageFrame = ({ item, pageLoading }: ICatImageFrame) => {
               width={iconWidth}
               height={iconHeight}
             />
-            <Typography variant="body-sm">{catBirthDate}</Typography>
+            <Typography variant="body-sm">
+              {toDateTimeString({ date: catBirthDate, locale: i18n.language, options: { showTime: false } })}
+            </Typography>
           </Stack>
         </StyledNameWrapper>
       </StyledImageWrapper>
