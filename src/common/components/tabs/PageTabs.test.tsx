@@ -5,6 +5,7 @@ import { pageTabInfoList } from '@/common/constants/pageTabList';
 import theme from '@/theme';
 import { ThemeProvider } from '@mui/material';
 import { fireEvent, render } from '@testing-library/react';
+import { t } from 'i18next';
 import { useRouter } from 'next/router';
 
 jest.mock('next/router', () => ({
@@ -35,7 +36,7 @@ describe('PageTabs', () => {
       </ThemeProvider>
     );
     mockPageTabInfoList.forEach((tab) => {
-      const tabElement = getByRole('tab', { name: tab.title });
+      const tabElement = getByRole('tab', { name: t(tab.title) });
       expect(tabElement).toBeInTheDocument();
     });
   });
@@ -46,7 +47,7 @@ describe('PageTabs', () => {
         <PageTabs />
       </ThemeProvider>
     );
-    const activeTab = getByRole('tab', { name: mockPageTabInfoList[0].title });
+    const activeTab = getByRole('tab', { name: t(mockPageTabInfoList[0].title) });
     expect(activeTab).toHaveClass('Mui-selected');
   });
 
@@ -57,7 +58,7 @@ describe('PageTabs', () => {
         <PageTabs />
       </ThemeProvider>
     );
-    const inactiveTab = getByRole('tab', { name: mockPageTabInfoList[1].title });
+    const inactiveTab = getByRole('tab', { name: t(mockPageTabInfoList[1].title) });
     fireEvent.click(inactiveTab);
     expect(mockPush).toHaveBeenCalledWith(mockPageTabInfoList[1].value);
   });
@@ -69,7 +70,7 @@ describe('PageTabs', () => {
         <PageTabs />
       </ThemeProvider>
     );
-    const activeTab = getByRole('tab', { name: mockPageTabInfoList[0].title });
+    const activeTab = getByRole('tab', { name: t(mockPageTabInfoList[0].title) });
     fireEvent.click(activeTab);
     expect(mockPush).not.toHaveBeenCalled();
   });
@@ -85,7 +86,7 @@ describe('PageTabs', () => {
     );
     const disabledTabs = mockPageTabInfoList.filter((tab) => tab.disabled);
     disabledTabs.forEach((tab) => {
-      const tabElement = getByRole('tab', { name: tab.title });
+      const tabElement = getByRole('tab', { name: t(tab.title) });
       expect(tabElement).toBeDisabled();
     });
   });

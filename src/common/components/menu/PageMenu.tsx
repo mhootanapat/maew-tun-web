@@ -1,8 +1,10 @@
+import { StyledMenu, StyledMenuItem } from '@/common/components/menu/StyledMenu';
 import { pageTabInfoList } from '@/common/constants/pageTabList';
 import { IPageMenu } from '@/common/types/common/components/menu/PageMenu';
-import { Box, Button, Menu, MenuItem, styled } from '@mui/material';
+import { Box, Button, styled } from '@mui/material';
 import { useRouter } from 'next/router';
 import { MouseEvent, memo, useCallback, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 //#region StyledButton
 const StyledButton = styled(Button)(({ theme }) => ({
@@ -22,38 +24,14 @@ const StyledButton = styled(Button)(({ theme }) => ({
     width: '100%',
     maxWidth: 40,
     background: theme.palette.colors.orange,
+    marginBottom: theme.spacing(-0.75),
   },
 }));
 //#endregion StyledButton
 
-//#region StyledMenu
-const StyledMenu = styled(Menu)(({ theme }) => ({
-  zIndex: 100000,
-  '& .MuiPaper-root': {
-    backgroundColor: theme.palette.colors.brown_beige,
-    color: theme.palette.colors.brown_dark,
-    shadows: theme.shadows[10],
-    borderRadius: theme.spacing(3),
-  },
-}));
-
-const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
-  fontWeight: 900,
-  '&:hover': {
-    backgroundColor: theme.palette.colors.orange_opacity_005,
-    color: theme.palette.colors.orange,
-  },
-
-  '&.Mui-selected': {
-    backgroundColor: theme.palette.colors.orange_opacity_005,
-    color: theme.palette.colors.orange_light,
-    fontWeight: theme.typography.fontWeightMedium,
-  },
-}));
-//#endregion StyledMenu
-
 const PageMenu = ({ boxProps }: IPageMenu) => {
   const router = useRouter();
+  const { t } = useTranslation();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const { value, title } = useMemo(
     () => pageTabInfoList.find((tab) => router.asPath === tab.value) ?? pageTabInfoList[0],
@@ -69,7 +47,7 @@ const PageMenu = ({ boxProps }: IPageMenu) => {
   return (
     <Box {...boxProps} data-testid="page-menu-container">
       <StyledButton onClick={handleClick} disableRipple>
-        {title}
+        {t(title)}
       </StyledButton>
       <StyledMenu anchorEl={anchorEl} open={!!anchorEl} onClose={handleClose}>
         {pageTabInfoList.map((tab) => {
@@ -84,7 +62,7 @@ const PageMenu = ({ boxProps }: IPageMenu) => {
               }}
               disabled={tab.disabled}
             >
-              {tab.title}
+              {t(tab.title)}
             </StyledMenuItem>
           );
         })}

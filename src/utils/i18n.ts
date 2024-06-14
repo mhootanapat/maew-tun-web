@@ -1,3 +1,4 @@
+import { SUPPORTED_LANGUAGES } from '@/common/constants/supportLanguages';
 import enTranslation from '@/locales/en_translation.json';
 import thTranslation from '@/locales/th_translation.json';
 import i18n from 'i18next';
@@ -6,7 +7,7 @@ import Cookies from 'js-cookie';
 import { initReactI18next } from 'react-i18next';
 
 export const DEFAULT_I18NEXT_NAMESPACE = 'translation';
-export const availableLangs = ['th', 'en'];
+export const availableLangs = SUPPORTED_LANGUAGES.map(({ value }) => value);
 export const resources = {
   en: {
     translation: enTranslation,

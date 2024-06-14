@@ -1,5 +1,3 @@
-// NavigationHeader.test.tsx
-
 import NavigationHeader from '@/common/components/header/NavigationHeader';
 import theme from '@/theme';
 import { ThemeProvider, useMediaQuery } from '@mui/material';

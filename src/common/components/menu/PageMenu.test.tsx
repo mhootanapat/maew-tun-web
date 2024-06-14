@@ -5,6 +5,7 @@ import { pageTabInfoList } from '@/common/constants/pageTabList';
 import theme from '@/theme';
 import { ThemeProvider } from '@mui/material';
 import { fireEvent, render } from '@testing-library/react';
+import { t } from 'i18next';
 import { useRouter } from 'next/router';
 
 jest.mock('next/router', () => ({
@@ -32,7 +33,7 @@ describe('PageMenu', () => {
         <PageMenu />
       </ThemeProvider>
     );
-    const button = getByRole('button', { name: pageTabInfoList[0].title });
+    const button = getByRole('button', { name: t(pageTabInfoList[0].title) });
     expect(button).toBeInTheDocument();
   });
 
@@ -42,7 +43,7 @@ describe('PageMenu', () => {
         <PageMenu />
       </ThemeProvider>
     );
-    const button = getByRole('button', { name: pageTabInfoList[0].title });
+    const button = getByRole('button', { name: t(pageTabInfoList[0].title) });
     fireEvent.click(button);
     const menu = getByRole('menu');
     expect(menu).toBeVisible();
@@ -54,9 +55,9 @@ describe('PageMenu', () => {
         <PageMenu />
       </ThemeProvider>
     );
-    const button = getByRole('button', { name: pageTabInfoList[0].title });
+    const button = getByRole('button', { name: t(pageTabInfoList[0].title) });
     fireEvent.click(button);
-    const menuItem = getByRole('menuitem', { name: pageTabInfoList[1].title });
+    const menuItem = getByRole('menuitem', { name: t(pageTabInfoList[1].title) });
     fireEvent.click(menuItem);
     expect(queryByRole('menu')).not.toBeInTheDocument();
   });
@@ -67,9 +68,9 @@ describe('PageMenu', () => {
         <PageMenu />
       </ThemeProvider>
     );
-    const button = getByRole('button', { name: pageTabInfoList[0].title });
+    const button = getByRole('button', { name: t(pageTabInfoList[0].title) });
     fireEvent.click(button);
-    const menuItem = getByRole('menuitem', { name: pageTabInfoList[1].title });
+    const menuItem = getByRole('menuitem', { name: t(pageTabInfoList[1].title) });
     fireEvent.click(menuItem);
     expect(mockPush).toHaveBeenCalledWith(pageTabInfoList[1].value);
   });
@@ -81,9 +82,9 @@ describe('PageMenu', () => {
         <PageMenu />
       </ThemeProvider>
     );
-    const button = getByRole('button', { name: pageTabInfoList[0].title });
+    const button = getByRole('button', { name: t(pageTabInfoList[0].title) });
     fireEvent.click(button);
-    const menuItem = getByRole('menuitem', { name: pageTabInfoList[0].title });
+    const menuItem = getByRole('menuitem', { name: t(pageTabInfoList[0].title) });
     fireEvent.click(menuItem);
     expect(mockPush).not.toHaveBeenCalled();
   });

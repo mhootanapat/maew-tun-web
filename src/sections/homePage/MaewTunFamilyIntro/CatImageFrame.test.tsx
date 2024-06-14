@@ -27,7 +27,7 @@ describe('CatImageFrame', () => {
   });
 
   it('renders the cat image and name after loading', async () => {
-    const { getByAltText, getByText } = render(
+    const { getByAltText, getByText, getByTestId } = render(
       <ThemeProvider theme={theme}>
         <CatImageFrame {...defaultProps} />
       </ThemeProvider>
@@ -45,7 +45,7 @@ describe('CatImageFrame', () => {
     });
 
     expect(getByAltText('cat img')).toBeVisible();
-    expect(getByText('2022-01-01')).toBeVisible();
+    expect(getByTestId('cat-birthday')).toBeVisible();
   });
 
   it('applies correct styles on hover', async () => {

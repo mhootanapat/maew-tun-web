@@ -1,7 +1,5 @@
 import { MAEW_TUN_INTRO_CARD_SPACING } from '@/common/constants/screen';
-import { toDateTimeString } from '@/utils/date';
 import { BoxProps } from '@mui/material';
-import i18next from 'i18next';
 
 export interface ICatImageFrameConfig {
   catName: string;
@@ -11,15 +9,15 @@ export interface ICatImageFrameConfig {
 }
 export const homePageCatImageList: ICatImageFrameConfig[] = [
   {
-    catName: i18next.t('kaiTunName'),
+    catName: 'kaiTunName', // NOTE: locale key
     catImgUrl: '/assets/images/kaitun.jpg',
-    catBirthDate: toDateTimeString({ date: '2022-01-18', locale: i18next.language, options: { showTime: false } }),
+    catBirthDate: '2022-01-18',
     skeletonBoxProps: { width: '50%' },
   },
   {
-    catName: i18next.t('kaiKhemName'),
+    catName: 'kaiKhemName', // NOTE: locale key
     catImgUrl: '/assets/images/kaikhem.jpg',
-    catBirthDate: toDateTimeString({ date: '2024-01-21', locale: i18next.language, options: { showTime: false } }),
+    catBirthDate: '2024-01-21',
     skeletonBoxProps: { right: -20, width: '50%', pr: MAEW_TUN_INTRO_CARD_SPACING },
   },
 ];

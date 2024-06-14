@@ -1,12 +1,14 @@
 import ImageWithFallback from '@/common/components/ImageWithFallback';
+import LanguageMenu from '@/common/components/menu/LanguageMenu';
 import PageMenu from '@/common/components/menu/PageMenu';
 import PageTabs from '@/common/components/tabs/PageTabs';
+import { INavigationHeader } from '@/common/types/common/components/header/NavigationHeader';
 import { Skeleton, Stack, useMediaQuery } from '@mui/material';
 import { memo, useCallback, useMemo, useState } from 'react';
 
-const navigationHeaderStyle = { zIndex: 9999, mt: -1.5 };
+const navigationHeaderStyle = { zIndex: 9999, mt: 1 };
 
-const NavigationHeader = () => {
+const NavigationHeader = (_props: INavigationHeader) => {
   const largeScreen = useMediaQuery('(min-width:650px)');
   const [logoLoading, setLogoLoading] = useState(true);
   const [textLogoLoading, setTextLogoLoading] = useState(true);
@@ -63,7 +65,10 @@ const NavigationHeader = () => {
             loading="eager"
           />
         </Stack>
-        {largeScreen ? <PageTabs sxProps={navigationHeaderStyle} /> : <PageMenu boxProps={navigationHeaderStyle} />}
+        <Stack direction="row">
+          {largeScreen ? <PageTabs sxProps={navigationHeaderStyle} /> : <PageMenu boxProps={navigationHeaderStyle} />}
+          <LanguageMenu />
+        </Stack>
       </Stack>
     </>
   );

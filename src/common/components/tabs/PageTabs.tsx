@@ -3,6 +3,7 @@ import { IPageTabs } from '@/common/types/common/components/tabs/PageTabs';
 import { Tab, TabProps, Tabs, TabsProps, styled } from '@mui/material';
 import { useRouter } from 'next/router';
 import { ReactNode, memo, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 //#region Tab Wrapper
 interface StyledTabsProps extends TabsProps {
@@ -13,6 +14,7 @@ interface StyledTabsProps extends TabsProps {
 const StyledTabs = styled((props: StyledTabsProps) => (
   <Tabs {...props} TabIndicatorProps={{ children: <span className="MuiTabs-indicatorSpan" /> }} />
 ))(({ theme }) => ({
+  marginBottom: theme.spacing(2),
   '& .MuiTabs-indicator': {
     display: 'flex',
     justifyContent: 'center',
@@ -62,7 +64,7 @@ const StyledTab = styled((props: TabProps) => <Tab disableRipple {...props} />)(
 
 const PageTabs = ({ sxProps }: IPageTabs) => {
   const router = useRouter();
-
+  const { t } = useTranslation();
   const activeTab = useMemo(
     () => pageTabInfoList.find((tab) => router.asPath === tab.value)?.value ?? pageTabInfoList[0].value,
     [router.asPath]
@@ -79,7 +81,7 @@ const PageTabs = ({ sxProps }: IPageTabs) => {
       {pageTabInfoList.map((tab) => (
         <StyledTab
           key={tab.value}
-          label={tab.title}
+          label={t(tab.title)}
           value={tab.value}
           onClick={() => {
             router.push(tab.value);
